@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0b0d" />
-  <title>AI Show — منصة الأنمي التفاعلية</title>
-  <meta name="description" content="منصة AI Show للتحديات التفاعلية في عالم الأنمي والمانجا." />
+  <title>AI Show — منصة التحديات التفاعلية</title>
+  <meta
+    name="description"
+    content="منصة AI Show للتحديات التفاعلية في عالم الأنمي والمانجا، مع الطاقم، أسئلة المتابعين، والسلاسل الأسبوعية."
+  />
+
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
@@ -17,6 +21,7 @@
 <body data-page="home">
   <div class="app-shell">
     <header id="site-header"></header>
+
     <main id="page-content" class="page-main">
       <section class="hero-section container section-gap-lg">
         <div class="hero-surface has-glow">
@@ -24,47 +29,105 @@
             <span class="eyebrow">Anime Icons Show</span>
             <h1 class="hero-title">منصة AI Show للتحديات التفاعلية</h1>
             <p class="hero-text">
-              تحديات أنمي ومانجا، صفحات أعضاء الطاقم، أسئلة المتابعين، وتجربة أسرع وأوضح ومبنية للموبايل أولاً.
+              تحديات أنمي ومانجا، صفحات أعضاء الطاقم، أسئلة المتابعين، وسلاسل أسبوعية مرتبطة بعالم AI Show.
             </p>
+
             <div class="hero-actions">
               <a class="btn btn-primary" href="./challenges.html">ابدأ التحدي</a>
               <a class="btn btn-secondary" href="./fan-questions.html">أرسل سؤالك</a>
             </div>
+
+            <ul class="hero-highlights" aria-label="أبرز مزايا المنصة">
+              <li>تحديات فردية مرتبطة بالأنمي والمانجا</li>
+              <li>صفحات أعضاء الطاقم وتحدياتهم</li>
+              <li>امتداد حي لسلاسل مثل فيتو والديوانية</li>
+            </ul>
           </div>
-          <div class="hero-side-card card-surface">
-            <p class="card-kicker">جاهز الآن</p>
-            <h2 class="card-title">Module 1 Scaffold</h2>
-            <p class="card-text">
-              تم تثبيت App Shell وNavigation وTheme وPWA Base كنقطة انطلاق للبناء الفعلي.
+
+          <aside class="hero-side-stack">
+            <article class="feature-panel card-surface">
+              <span class="card-kicker">هذا الأسبوع</span>
+              <h2 class="card-title">فيتو ون بيس</h2>
+              <p class="card-text">أسئلة الجمهور، نظريات، واعتراضات على طريقة AI Show.</p>
+              <a class="text-link" href="./fan-questions.html">أرسل سؤالاً الآن</a>
+            </article>
+
+            <article class="feature-panel card-surface">
+              <span class="card-kicker">جاهز قريباً</span>
+              <h2 class="card-title">اللعب الجماعي</h2>
+              <p class="card-text">جلسات جماعية، طور الشاشة، وتوسعة مستقبلية مثل ولا كلمة.</p>
+              <a class="text-link" href="./group-play.html">استكشف الطور الجماعي</a>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section class="container section-gap-md">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Quick Entry</span>
+            <h2 class="section-title">ابدأ من المسار المناسب</h2>
+          </div>
+        </div>
+        <div id="quick-paths-grid" class="quick-grid"></div>
+      </section>
+
+      <section class="container section-gap-md">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Weekly Focus</span>
+            <h2 class="section-title">سلاسل هذا الأسبوع</h2>
+            <p class="section-text">محتوى مرتبط بالحلقات والسلاسل المستمرة في AI Show.</p>
+          </div>
+          <a class="btn btn-ghost" href="./about.html">عن المنصة</a>
+        </div>
+        <div id="weekly-series-grid" class="content-grid content-grid--series"></div>
+      </section>
+
+      <section class="container section-gap-md">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Cast</span>
+            <h2 class="section-title">أعضاء الطاقم</h2>
+            <p class="section-text">تعرف على الوجوه الأساسية وادخل تحدياتهم.</p>
+          </div>
+          <a class="btn btn-ghost" href="./cast.html">كل الطاقم</a>
+        </div>
+        <div id="featured-members-grid" class="content-grid content-grid--members"></div>
+      </section>
+
+      <section class="container section-gap-md">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Trending</span>
+            <h2 class="section-title">تحديات شائعة</h2>
+            <p class="section-text">هذه بذرة أولية. سيأتي لاحقاً ربط أقوى بالتصنيفات والتحديات الحقيقية.</p>
+          </div>
+          <a class="btn btn-ghost" href="./challenges.html">كل التحديات</a>
+        </div>
+        <div id="trending-challenges-grid" class="content-grid content-grid--challenges"></div>
+      </section>
+
+      <section class="container section-gap-md fan-cta-shell">
+        <div class="fan-cta card-surface has-glow">
+          <div class="fan-cta__copy">
+            <span class="eyebrow">Fans</span>
+            <h2 class="section-title">هل عندك سؤال لفيتو أو سلسلة قادمة؟</h2>
+            <p class="section-text">
+              ادخل صفحة أسئلة المتابعين وأرسل سؤالك وحدد السلسلة أو العضو المستهدف.
             </p>
+          </div>
+          <div class="fan-cta__actions">
+            <a class="btn btn-primary" href="./fan-questions.html">أرسل سؤالك</a>
+            <a class="btn btn-secondary" href="./group-play.html">استكشف اللعب الجماعي</a>
           </div>
         </div>
       </section>
-      <section class="container section-gap-md quick-grid">
-        <a class="quick-card card-surface" href="./challenges.html">
-          <span class="quick-card__label">Challenges</span>
-          <strong class="quick-card__title">التحديات</strong>
-          <p class="quick-card__text">اختبارات، صور، شخصيات، ون بيس، ونظريات.</p>
-        </a>
-        <a class="quick-card card-surface" href="./cast.html">
-          <span class="quick-card__label">Cast</span>
-          <strong class="quick-card__title">الطاقم</strong>
-          <p class="quick-card__text">تعرف على الأعضاء وابدأ تحدياتهم.</p>
-        </a>
-        <a class="quick-card card-surface" href="./fan-questions.html">
-          <span class="quick-card__label">Fans</span>
-          <strong class="quick-card__title">أسئلة المتابعين</strong>
-          <p class="quick-card__text">أرسل سؤالك واربطه بفيتو أو سلسلة أسبوعية.</p>
-        </a>
-        <a class="quick-card card-surface" href="./profile.html">
-          <span class="quick-card__label">Profile</span>
-          <strong class="quick-card__title">ملفي</strong>
-          <p class="quick-card__text">أنشئ هويتك الرقمية كأوتاكو داخل المنصة.</p>
-        </a>
-      </section>
     </main>
+
     <nav id="mobile-nav"></nav>
   </div>
+
   <script type="module" src="./js/app.js"></script>
 </body>
 </html>

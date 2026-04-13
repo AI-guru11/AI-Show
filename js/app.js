@@ -4,9 +4,11 @@ import { renderMobileNav } from "./components/mobile-nav.js";
 
 async function loadJson(path) {
   const response = await fetch(path);
+
   if (!response.ok) {
     throw new Error(`Failed to load: ${path}`);
   }
+
   return response.json();
 }
 
@@ -14,10 +16,13 @@ async function boot() {
   const body = document.body;
   const currentPage = body.dataset.page || "home";
 
-  const [site, navigation, members] = await Promise.all([
+  const [site, navigation, members, categories, series, challenges] = await Promise.all([
     loadJson("./data/site.json"),
     loadJson("./data/navigation.json"),
-    loadJson("./data/members.json")
+    loadJson("./data/members.json"),
+    loadJson("./data/categories.json"),
+    loadJson("./data/series.json").catch(() => ({ items: [] })),
+    loadJson("./data/challenges.json").catch(() => ({ items: [] }))
   ]);
 
   const headerTarget = qs("#site-header");
@@ -26,8 +31,13 @@ async function boot() {
   if (headerTarget) {
     headerTarget.innerHTML = renderHeader(navigation.items, currentPage, site);
   }
+
   if (mobileNavTarget) {
     mobileNavTarget.innerHTML = renderMobileNav(navigation.items, currentPage);
+  }
+
+  if (currentPage === "home") {
+    renderHomepage({ members: members.items, categories: categories.items, series: series.items, challenges: challenges.items });
   }
 
   if (currentPage === "cast") {
@@ -37,34 +47,17 @@ async function boot() {
   registerServiceWorker();
 }
 
-function renderMembersPreview(items) {
-  const target = qs("#members-preview");
+function renderHomepage({ members, categories, series, challenges }) {
+  renderQuickPaths(categories);
+  renderWeeklySeries(series);
+  renderFeaturedMembers(members);
+  renderTrendingChallenges(challenges);
+}
+
+function renderQuickPaths(items) {
+  const target = qs("#quick-paths-grid");
   if (!target) return;
-  target.innerHTML = items
-    .slice(0, 6)
-    .map(
-      (member) => `
-        <article class="member-preview-card card-surface">
-          <span class="eyebrow">${member.role}</span>
-          <h2 class="member-preview-card__name">${member.name}</h2>
-          <p class="text-soft">${member.bioShort}</p>
-        </article>
-      `
-    )
-    .join("");
-}
 
-function registerServiceWorker() {
-  if (!("serviceWorker" in navigator)) return;
-  window.addEventListener("load", async () => {
-    try {
-      await navigator.serviceWorker.register("./js/pwa/sw.js");
-    } catch (error) {
-      console.error("Service Worker registration failed:", error);
-    }
-  });
-}
-
-boot().catch((error) => {
-  console.error("App boot failed:", error);
-});
+  target.innerHTML = items.slice(0, 4).map((item) => `
+    <article class="quick-card card-surface">
+      <span class="quick-card
