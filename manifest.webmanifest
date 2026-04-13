@@ -1,0 +1,13 @@
+{
+  "name": "AI Show Platform",
+  "short_name": "AI Show",
+  "description": "منصة AI Show للتحديات التفاعلية في عالم الأنمي والمانجا.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0b0d",
+  "theme_color": "#0b0b0d",
+  "icons": []
+}

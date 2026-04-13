@@ -1,0 +1,12 @@
+.has-glow {
+  box-shadow: var(--shadow-card), var(--glow-brand);
+}
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-soft {
+  color: var(--color-text-soft);
+}
+.hidden {
+  display: none !important;
+}

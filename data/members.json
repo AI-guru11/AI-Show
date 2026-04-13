@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "id": "mohammed-alnami",
+      "name": "محمد النعامي",
+      "role": "مؤسس ومقدم",
+      "slug": "mohammed-alnami",
+      "bioShort": "واجهة قيادية وحضور أساسي في هوية AI Show.",
+      "socialLinks": { "all": "https://instabio.cc/4112412SVgKDk" }
+    },
+    {
+      "id": "majed-alamer",
+      "name": "ماجد العامر",
+      "role": "مؤسس ومقدم",
+      "slug": "majed-alamer",
+      "bioShort": "حاضر بقوة في التحليل، النظريات، وسلسلة فيتو.",
+      "socialLinks": { "all": "https://linkfly.to/40208fnHvGN" }
+    },
+    {
+      "id": "ibrahim-alamer",
+      "name": "ابراهيم العامر",
+      "role": "مؤسس ومقدم",
+      "slug": "ibrahim-alamer",
+      "bioShort": "جزء محوري من الطاقم المؤسس والمحتوى المستمر.",
+      "socialLinks": { "all": "https://linkfly.to/40314eKJ1O6" }
+    },
+    {
+      "id": "saud-alomar",
+      "name": "سعود العمر",
+      "role": "مقدم",
+      "slug": "saud-alomar",
+      "bioShort": "حضور واضح في النقاشات وتفاعل الطاقم.",
+      "socialLinks": { "all": "https://linktr.ee/S3ddey" }
+    },
+    {
+      "id": "rashed-aldosari",
+      "name": "راشد الدوسري",
+      "role": "مقدم",
+      "slug": "rashed-aldosari",
+      "bioShort": "من الوجوه الأساسية في حلقات الطاقم وسلاسل النقاش.",
+      "socialLinks": { "all": "https://linkfly.to/rsh4485" }
+    },
+    {
+      "id": "abdulbari-alsalem",
+      "name": "عبدالباري السالم",
+      "role": "مقدم",
+      "slug": "abdulbari-alsalem",
+      "bioShort": "مشارك مستمر ضمن دائرة التفاعل والمحتوى.",
+      "socialLinks": { "all": "https://linkfly.to/40314kYeqkb" }
+    }
+  ]
+}

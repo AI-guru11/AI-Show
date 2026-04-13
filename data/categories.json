@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "id": "one-piece", "title": "ون بيس", "type": "anime-franchise" },
+    { "id": "veto", "title": "فيتو", "type": "series-format" },
+    { "id": "anime-general", "title": "أنمي عام", "type": "anime-wide" },
+    { "id": "manga-general", "title": "مانجا عامة", "type": "manga-wide" },
+    { "id": "member-challenges", "title": "تحديات الأعضاء", "type": "cast-driven" },
+    { "id": "theories", "title": "نظريات", "type": "theory" }
+  ]
+}
