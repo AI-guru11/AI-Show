@@ -1,10 +1,46 @@
 {
   "items": [
-    { "id": "one-piece", "title": "ون بيس", "type": "anime-franchise" },
-    { "id": "veto", "title": "فيتو", "type": "series-format" },
-    { "id": "anime-general", "title": "أنمي عام", "type": "anime-wide" },
-    { "id": "manga-general", "title": "مانجا عامة", "type": "manga-wide" },
-    { "id": "member-challenges", "title": "تحديات الأعضاء", "type": "cast-driven" },
-    { "id": "theories", "title": "نظريات", "type": "theory" }
+    {
+      "id": "one-piece",
+      "title": "ون بيس",
+      "type": "anime-franchise",
+      "typeLabel": "Franchise",
+      "description": "تحديات مرتبطة بالعالم، الشخصيات، اللور، والنظريات."
+    },
+    {
+      "id": "member-challenges",
+      "title": "تحديات الأعضاء",
+      "type": "cast-driven",
+      "typeLabel": "Cast",
+      "description": "ادخل تحديات مرتبطة بالطاقم وتفاعل الجمهور معهم."
+    },
+    {
+      "id": "veto",
+      "title": "فيتو",
+      "type": "series-format",
+      "typeLabel": "Series",
+      "description": "أسئلة الجمهور، نظريات، واعتراضات مستوحاة من السلسلة."
+    },
+    {
+      "id": "anime-general",
+      "title": "أنمي عام",
+      "type": "anime-wide",
+      "typeLabel": "Anime",
+      "description": "تحديات متنوعة تغطي أكثر من عمل وأنمي مختلف."
+    },
+    {
+      "id": "manga-general",
+      "title": "مانجا عامة",
+      "type": "manga-wide",
+      "typeLabel": "Manga",
+      "description": "تحديات ونقاشات مبنية على المانجا والقراءة الأسبوعية."
+    },
+    {
+      "id": "theories",
+      "title": "نظريات",
+      "type": "theory",
+      "typeLabel": "Lore",
+      "description": "مسار مخصص للنظريات والتوقعات والقراءات العميقة."
+    }
   ]
 }

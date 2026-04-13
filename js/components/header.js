@@ -1,4 +1,6 @@
 export function renderHeader(navigationItems, currentPage) {
+  const desktopItems = navigationItems.filter((item) => !item.mobileOnly);
+
   return `
     <div class="site-header">
       <div class="site-header__inner container">
@@ -6,8 +8,9 @@ export function renderHeader(navigationItems, currentPage) {
           <span class="brand-mark__logo" aria-hidden="true"></span>
           <span>AI Show</span>
         </a>
+
         <nav class="site-header__nav" aria-label="التنقل الرئيسي">
-          ${navigationItems
+          ${desktopItems
             .map(
               (item) => `
                 <a href="${item.href}" class="${item.key === currentPage ? "is-active" : ""}">

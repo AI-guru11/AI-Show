@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0b0d" />
+  <title>تصنيف — AI Show</title>
+  <meta name="description" content="صفحة تصنيف داخل منصة AI Show تعرض التحديات المرتبطة به." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./css/tokens.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/utilities.css" />
+  <link rel="stylesheet" href="./css/themes/ai-show-dark.css" />
+</head>
+<body data-page="category">
+  <div class="app-shell">
+    <header id="site-header"></header>
+    <main id="page-content" class="page-main container section-gap-lg">
+      <section id="category-hero" class="page-intro card-surface"></section>
+
+      <section class="section-gap-md">
+        <div class="section-head section-head--stack-mobile">
+          <div>
+            <span class="eyebrow">Category Challenges</span>
+            <h2 class="section-title section-title--md">التحديات داخل هذا التصنيف</h2>
+          </div>
+          <a class="btn btn-ghost" href="./challenges.html">العودة إلى المركز</a>
+        </div>
+        <div id="category-challenges-grid" class="content-grid content-grid--challenges"></div>
+      </section>
+
+      <section class="section-gap-md">
+        <div class="related-panel card-surface">
+          <span class="eyebrow">Next Step</span>
+          <h2 class="section-title section-title--md">اختر تحدياً وابدأ البناء الحقيقي للتجربة</h2>
+          <p class="section-text">في Modules القادمة سنربط هذه الصفحة مع تفاصيل التحدي وطور اللعب والنتائج.</p>
+        </div>
+      </section>
+    </main>
+    <nav id="mobile-nav"></nav>
+  </div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

@@ -58,7 +58,8 @@
   }
 
   .content-grid--challenges,
-  .content-grid--series {
+  .content-grid--series,
+  .content-grid--categories {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 

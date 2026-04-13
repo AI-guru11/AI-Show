@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": "veto-one-piece",
+      "title": "فيتو مانجا ون بيس",
+      "typeLabel": "Veto",
+      "frequency": "شبه أسبوعي",
+      "franchise": "ون بيس",
+      "description": "سلسلة مبنية على أسئلة الجمهور والنظريات والاعتراضات بين أعضاء الطاقم."
+    },
+    {
+      "id": "one-piece-impression",
+      "title": "انطباع مانجا ون بيس",
+      "typeLabel": "Weekly",
+      "frequency": "أسبوعي",
+      "franchise": "ون بيس",
+      "description": "مراجعة مستمرة لفصول المانجا وتحليل أحداثها وتوقع ما بعدها."
+    },
+    {
+      "id": "anime-dewaniya",
+      "title": "ديوانية الأنمي",
+      "typeLabel": "Discussion",
+      "frequency": "مستمر",
+      "franchise": "أنمي عام",
+      "description": "جلسات نقاشية حول الأعمال الأسبوعية والاتجاهات والآراء الجماعية."
+    }
+  ]
+}

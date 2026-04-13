@@ -1,30 +1,16 @@
-# AI Show Platform
+# AI Show Platform — Module 3 Build
 
-النسخة الحالية تمثل **Phase 5 / Module 1 Build** من مشروع AI Show Platform.
+النسخة الحالية تشمل:
+- Module 1 scaffold
+- Module 2 homepage build
+- Module 3 challenges hub + category page
 
-## ما الذي تم بناؤه الآن؟
-
-- App Shell
-- Shared Header
-- Mobile Navigation
-- Theme Tokens
-- Base CSS Layers
-- PWA base files
-- Data seed files
-- صفحات تمهيدية أساسية
-
-## ما الذي سيأتي بعده؟
-
-- Module 2: Homepage build
-- Module 3: Challenges hub
-- Module 4: Cast pages
-- Module 5: Challenge play flow
-
-## طريقة التشغيل
-
-يكفي تشغيل المشروع كملفات static عبر أي static server بسيط.
-
+## التشغيل المحلي
 ```bash
-cd ai-show-platform
 python3 -m http.server 8080
 ```
+
+ثم افتح:
+- `/index.html`
+- `/challenges.html`
+- `/category.html?id=one-piece`

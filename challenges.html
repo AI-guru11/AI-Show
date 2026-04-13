@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0b0d" />
   <title>التحديات — AI Show</title>
+  <meta name="description" content="مركز تحديات AI Show: تصنيفات، فلاتر، وتحديات شائعة في الأنمي والمانجا." />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
@@ -18,9 +19,41 @@
     <header id="site-header"></header>
     <main id="page-content" class="page-main container section-gap-lg">
       <section class="page-intro card-surface">
-        <span class="eyebrow">Challenges</span>
+        <span class="eyebrow">Challenges Hub</span>
         <h1 class="section-title">مركز التحديات</h1>
-        <p class="section-text">هذه صفحة تمهيدية في Module 1. ستتوسع لاحقاً إلى فلاتر، بطاقات، وتصنيفات كاملة.</p>
+        <p class="section-text">
+          اختر التصنيف أو الفئة أو تحديات الأعضاء. هذه المرحلة تبني hub حقيقي وتربط الصفحة الرئيسية بوجهة واضحة.
+        </p>
+      </section>
+
+      <section class="section-gap-md">
+        <div class="section-head section-head--stack-mobile">
+          <div>
+            <span class="eyebrow">Filters</span>
+            <h2 class="section-title section-title--md">استكشف حسب التصنيف</h2>
+          </div>
+          <div id="category-filter-chips" class="filter-chips" aria-label="فلاتر التصنيفات"></div>
+        </div>
+      </section>
+
+      <section class="section-gap-md">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Featured Categories</span>
+            <h2 class="section-title section-title--md">تصنيفات مختارة</h2>
+          </div>
+        </div>
+        <div id="categories-grid" class="content-grid content-grid--categories"></div>
+      </section>
+
+      <section class="section-gap-md">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Trending Challenges</span>
+            <h2 class="section-title section-title--md">تحديات شائعة</h2>
+          </div>
+        </div>
+        <div id="hub-challenges-grid" class="content-grid content-grid--challenges"></div>
       </section>
     </main>
     <nav id="mobile-nav"></nav>

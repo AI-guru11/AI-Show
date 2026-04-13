@@ -60,7 +60,9 @@
 .challenge-card,
 .series-card,
 .member-card,
-.fan-cta {
+.category-card,
+.fan-cta,
+.related-panel {
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -85,13 +87,18 @@
   font-size: clamp(2rem, 5vw, 3.4rem);
 }
 
+.section-title--md {
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+}
+
 .hero-text,
 .section-text,
 .card-text,
 .quick-card__text,
 .challenge-card__text,
 .member-card__text,
-.series-card__text {
+.series-card__text,
+.category-card__text {
   color: var(--color-text-soft);
 }
 
@@ -144,7 +151,10 @@
   gap: var(--space-4);
 }
 
-.feature-panel {
+.feature-panel,
+.page-intro,
+.fan-cta,
+.related-panel {
   padding: var(--space-5);
 }
 
@@ -194,11 +204,17 @@
   margin-bottom: var(--space-5);
 }
 
+.section-head--stack-mobile {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
 .quick-card,
 .member-preview-card,
 .challenge-card,
 .member-card,
-.series-card {
+.series-card,
+.category-card {
   padding: var(--space-5);
 }
 
@@ -206,7 +222,8 @@
 .member-preview-card__name,
 .challenge-card__title,
 .member-card__title,
-.series-card__title {
+.series-card__title,
+.category-card__title {
   display: block;
   margin-top: var(--space-2);
   font-size: 1.125rem;
@@ -214,7 +231,8 @@
 
 .challenge-card__meta,
 .member-card__meta,
-.series-card__meta {
+.series-card__meta,
+.category-card__meta {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -236,18 +254,37 @@
 
 .challenge-card__actions,
 .member-card__actions,
-.series-card__actions {
+.series-card__actions,
+.category-card__actions {
   display: flex;
   gap: var(--space-3);
   margin-top: var(--space-5);
 }
 
-.fan-cta-shell {
-  padding-bottom: var(--space-9);
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
-.fan-cta {
-  padding: var(--space-6);
+.filter-chip {
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.03);
+  color: var(--color-text-soft);
+}
+
+.filter-chip.is-active,
+.filter-chip:hover {
+  color: var(--color-text);
+  border-color: rgba(240, 184, 75, 0.28);
+  box-shadow: var(--glow-brand);
+}
+
+.fan-cta-shell {
+  padding-bottom: var(--space-9);
 }
 
 .mobile-nav {
@@ -298,5 +335,10 @@
   .hero-surface {
     grid-template-columns: 1.4fr 0.9fr;
     align-items: stretch;
+  }
+
+  .section-head--stack-mobile {
+    flex-direction: row;
+    align-items: flex-end;
   }
 }

@@ -7,6 +7,7 @@ export function readStorage(key, fallback = null) {
     return fallback;
   }
 }
+
 export function writeStorage(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));

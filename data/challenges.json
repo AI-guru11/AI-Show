@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "id": "op-lore-001",
+      "categoryId": "one-piece",
+      "title": "تحدي لور ون بيس",
+      "description": "أسئلة أولية حول الشخصيات، الأحداث، والربط بين النظريات.",
+      "formatType": "multiple-choice",
+      "formatTypeLabel": "Quiz",
+      "difficulty": "medium",
+      "difficultyLabel": "متوسط",
+      "estimatedDuration": 6
+    },
+    {
+      "id": "veto-round-001",
+      "categoryId": "veto",
+      "title": "جولة فيتو تمهيدية",
+      "description": "تجربة أولية مستوحاة من فيتو: سؤال، اعتراض، وتحدي رأي.",
+      "formatType": "cast-driven",
+      "formatTypeLabel": "Veto",
+      "difficulty": "medium",
+      "difficultyLabel": "متوسط",
+      "estimatedDuration": 5
+    },
+    {
+      "id": "guess-character-001",
+      "categoryId": "anime-general",
+      "title": "اعرف الشخصية",
+      "description": "تحدٍ بصري مبدئي للتعرف على الشخصيات من السياق أو الوصف.",
+      "formatType": "guess-character",
+      "formatTypeLabel": "Character",
+      "difficulty": "easy",
+      "difficultyLabel": "سهل",
+      "estimatedDuration": 4
+    },
+    {
+      "id": "member-style-001",
+      "categoryId": "member-challenges",
+      "title": "هل تعرف ذوق العضو؟",
+      "description": "تحدٍ تجريبي يربط الذوق والسؤال بعضو من طاقم AI Show.",
+      "formatType": "member-challenge",
+      "formatTypeLabel": "Member",
+      "difficulty": "medium",
+      "difficultyLabel": "متوسط",
+      "estimatedDuration": 5
+    },
+    {
+      "id": "manga-theory-001",
+      "categoryId": "theories",
+      "title": "تحدي النظريات",
+      "description": "أسئلة مبنية على التوقعات والربط بين المعطيات داخل القصة.",
+      "formatType": "theory",
+      "formatTypeLabel": "Theory",
+      "difficulty": "hard",
+      "difficultyLabel": "صعب",
+      "estimatedDuration": 7
+    },
+    {
+      "id": "anime-general-001",
+      "categoryId": "manga-general",
+      "title": "مانجا عامة — جولة سريعة",
+      "description": "مجموعة سريعة من التحديات المتنوعة لعناوين وشخصيات شهيرة.",
+      "formatType": "mixed",
+      "formatTypeLabel": "Mixed",
+      "difficulty": "easy",
+      "difficultyLabel": "سهل",
+      "estimatedDuration": 4
+    }
+  ]
+}

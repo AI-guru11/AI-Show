@@ -5,7 +5,7 @@
     { "key": "cast", "label": "الطاقم", "href": "./cast.html" },
     { "key": "fan-questions", "label": "المتابعين", "href": "./fan-questions.html" },
     { "key": "group-play", "label": "الجماعي", "href": "./group-play.html" },
-    { "key": "profile", "label": "ملفي", "href": "./profile.html" },
-    { "key": "about", "label": "عن المنصة", "href": "./about.html" }
+    { "key": "profile", "label": "ملفي", "href": "./profile.html", "mobile": false },
+    { "key": "about", "label": "عن المنصة", "href": "./about.html", "mobileOnly": true }
   ]
 }

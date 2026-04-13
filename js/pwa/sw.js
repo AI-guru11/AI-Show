@@ -1,7 +1,9 @@
-const CACHE_NAME = "ai-show-shell-v1";
+const CACHE_NAME = "ai-show-shell-v2";
 const SHELL_ASSETS = [
   "./",
   "./index.html",
+  "./challenges.html",
+  "./category.html",
   "./css/tokens.css",
   "./css/base.css",
   "./css/layout.css",
@@ -15,7 +17,10 @@ const SHELL_ASSETS = [
   "./js/utils/dom.js",
   "./js/utils/storage.js",
   "./data/site.json",
-  "./data/navigation.json"
+  "./data/navigation.json",
+  "./data/categories.json",
+  "./data/challenges.json",
+  "./data/series.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -28,9 +33,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
       )
     )
   );
