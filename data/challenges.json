@@ -2,69 +2,99 @@
   "items": [
     {
       "id": "op-lore-001",
-      "categoryId": "one-piece",
       "title": "تحدي لور ون بيس",
       "description": "أسئلة أولية حول الشخصيات، الأحداث، والربط بين النظريات.",
       "formatType": "multiple-choice",
       "formatTypeLabel": "Quiz",
       "difficulty": "medium",
       "difficultyLabel": "متوسط",
-      "estimatedDuration": 6
+      "estimatedDuration": 6,
+      "categoryId": "one-piece",
+      "relatedMember": "majed-alamer"
     },
     {
       "id": "veto-round-001",
-      "categoryId": "veto",
       "title": "جولة فيتو تمهيدية",
       "description": "تجربة أولية مستوحاة من فيتو: سؤال، اعتراض، وتحدي رأي.",
       "formatType": "cast-driven",
       "formatTypeLabel": "Veto",
       "difficulty": "medium",
       "difficultyLabel": "متوسط",
-      "estimatedDuration": 5
+      "estimatedDuration": 5,
+      "categoryId": "veto",
+      "relatedMember": "mohammed-alnami"
     },
     {
       "id": "guess-character-001",
-      "categoryId": "anime-general",
       "title": "اعرف الشخصية",
       "description": "تحدٍ بصري مبدئي للتعرف على الشخصيات من السياق أو الوصف.",
       "formatType": "guess-character",
       "formatTypeLabel": "Character",
       "difficulty": "easy",
       "difficultyLabel": "سهل",
-      "estimatedDuration": 4
+      "estimatedDuration": 4,
+      "categoryId": "anime-general",
+      "relatedMember": "saud-alomar"
     },
     {
       "id": "member-style-001",
-      "categoryId": "member-challenges",
       "title": "هل تعرف ذوق العضو؟",
       "description": "تحدٍ تجريبي يربط الذوق والسؤال بعضو من طاقم AI Show.",
       "formatType": "member-challenge",
       "formatTypeLabel": "Member",
       "difficulty": "medium",
       "difficultyLabel": "متوسط",
-      "estimatedDuration": 5
+      "estimatedDuration": 5,
+      "categoryId": "member-challenges",
+      "relatedMember": "rashed-aldosari"
     },
     {
       "id": "manga-theory-001",
-      "categoryId": "theories",
       "title": "تحدي النظريات",
       "description": "أسئلة مبنية على التوقعات والربط بين المعطيات داخل القصة.",
       "formatType": "theory",
       "formatTypeLabel": "Theory",
       "difficulty": "hard",
       "difficultyLabel": "صعب",
-      "estimatedDuration": 7
+      "estimatedDuration": 7,
+      "categoryId": "theories",
+      "relatedMember": "ibrahim-alamer"
     },
     {
       "id": "anime-general-001",
-      "categoryId": "manga-general",
-      "title": "مانجا عامة — جولة سريعة",
+      "title": "أنمي عام — جولة سريعة",
       "description": "مجموعة سريعة من التحديات المتنوعة لعناوين وشخصيات شهيرة.",
       "formatType": "mixed",
       "formatTypeLabel": "Mixed",
       "difficulty": "easy",
       "difficultyLabel": "سهل",
-      "estimatedDuration": 4
+      "estimatedDuration": 4,
+      "categoryId": "anime-general",
+      "relatedMember": "abdulbari-alsalem"
+    },
+    {
+      "id": "member-style-002",
+      "title": "جمهور العضو ضد الجمهور",
+      "description": "صيغة أولية لتحديات تربط هوية العضو بجمهوره وذوقه ونبرة حلقاته.",
+      "formatType": "member-challenge",
+      "formatTypeLabel": "Member",
+      "difficulty": "medium",
+      "difficultyLabel": "متوسط",
+      "estimatedDuration": 6,
+      "categoryId": "member-challenges",
+      "relatedMember": "alwajeeh"
+    },
+    {
+      "id": "veto-round-002",
+      "title": "اعتراضات فيتو — الجولة الثانية",
+      "description": "أسئلة مرشحة للنقاش والفيتو والردود بين أعضاء الطاقم.",
+      "formatType": "cast-driven",
+      "formatTypeLabel": "Veto",
+      "difficulty": "hard",
+      "difficultyLabel": "صعب",
+      "estimatedDuration": 7,
+      "categoryId": "veto",
+      "relatedMember": "majed-alamer"
     }
   ]
 }

@@ -23,6 +23,30 @@
       "frequency": "مستمر",
       "franchise": "أنمي عام",
       "description": "جلسات نقاشية حول الأعمال الأسبوعية والاتجاهات والآراء الجماعية."
+    },
+    {
+      "id": "manga-dewaniya",
+      "title": "ديوانية المانجا",
+      "typeLabel": "Discussion",
+      "frequency": "مستمر",
+      "franchise": "مانجا عامة",
+      "description": "جلسات تركز على المانجا، الفصول، والتحليل العميق للأعمال المقروءة."
+    },
+    {
+      "id": "veto-mixed",
+      "title": "فيتو منوع",
+      "typeLabel": "Veto",
+      "frequency": "مستمر",
+      "franchise": "أنمي عام",
+      "description": "نسخة أوسع من فيتو تسمح بأسئلة متنوعة من عوالم أنمي مختلفة."
+    },
+    {
+      "id": "theory-one-piece",
+      "title": "نظريات مانجا ون بيس",
+      "typeLabel": "Theory",
+      "frequency": "مستمر",
+      "franchise": "ون بيس",
+      "description": "مساحة للنظريات، الربط بين الأحداث، وتوقع المسارات القادمة في القصة."
     }
   ]
 }

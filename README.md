@@ -1,16 +1,22 @@
-# AI Show Platform — Module 3 Build
+# AI Show Platform
 
-النسخة الحالية تشمل:
-- Module 1 scaffold
-- Module 2 homepage build
-- Module 3 challenges hub + category page
+النسخة الحالية تمثل **Module 4 — Member Directory + Member Pages** من مشروع AI Show Platform.
 
-## التشغيل المحلي
-```bash
-python3 -m http.server 8080
-```
+## ما الذي تم بناؤه الآن؟
+- Homepage أولية
+- Challenges Hub
+- Category Pages
+- Cast Directory
+- Member Pages
+- Shared Header / Mobile Navigation
+- Theme Tokens
+- PWA base files
+- Data seed files
 
-ثم افتح:
-- `/index.html`
-- `/challenges.html`
-- `/category.html?id=one-piece`
+## ما الذي سيأتي بعده؟
+- Module 5: Challenge Detail + Play Flow
+- Module 6: Result / Share Flow
+- Module 7: Fan Questions Flow
+
+## طريقة التشغيل
+يكفي تشغيل المشروع كملفات static عبر أي static server بسيط.
