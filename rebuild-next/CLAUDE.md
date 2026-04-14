@@ -79,7 +79,7 @@ rebuild-next/
 │       └── page-shell.js   wrapPage(), subHeader(), skeletonBlock()
 ├── data/
 │   ├── worlds.js           6 anime universe objects + getWorld(id) — fields: id,title,titleEn,emoji,status,statusLabel,description,relatedMembers
-│   ├── challenges.js       3 challenges + getChallenge(id) + getChallengesByWorld()
+│   ├── challenges.js       8 challenges + getChallenge(id) + getChallengesByWorld() — one per world minimum
 │   ├── members.js          4 members + getMember(id)
 │   └── questions.js        5 questions + getOpenQuestions() + getQuestionsForMember()
 └── screens/
@@ -236,7 +236,7 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 | 6 | Fan questions are read-only | Submission requires backend | Deferred until backend/API step |
 | 7 | No search surface | Out of scope for Step 2 | Planned for a later step |
 | 8 | `play.js` inline re-render on question advance | Simple approach without extra abstraction | Refactor when play screen gets Step N attention |
-| 9 | All 3 challenges share `worldId: 'one-piece'` | Seed data only covers One Piece topics | Add challenges for Naruto, AoT etc. in a data step |
+| 9 | Each non-One Piece world has exactly 1 challenge (2 questions) | Minimum coverage pass — Step 3.1 | Expand per world in a dedicated data step |
 | 10 | `worlds.js` has no poster images | Static build, no CDN/assets yet | Add `posterUrl` field when images are available |
 
 ---
@@ -258,3 +258,19 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 `one-piece`, `naruto`, `attack-on-titan`, `jujutsu-kaisen`, `demon-slayer`, `dragon-ball`
 
 **Screens NOT changed:** Crew, Member, Fan Questions, Play, Result, Home.
+
+## 14. Step 3.1 — World Challenge Coverage Pass
+
+**Problem fixed:** 5 anime worlds (`naruto`, `attack-on-titan`, `jujutsu-kaisen`, `demon-slayer`, `dragon-ball`) had no challenges, showing an empty state on World Detail.
+
+**What changed:** `data/challenges.js` only. Added one challenge per previously empty world:
+
+| New ID | World | Questions |
+|--------|-------|-----------|
+| `naruto-lore-001` | `naruto` | 2 |
+| `aot-lore-001` | `attack-on-titan` | 2 |
+| `jjk-lore-001` | `jujutsu-kaisen` | 2 |
+| `ds-lore-001` | `demon-slayer` | 2 |
+| `db-lore-001` | `dragon-ball` | 2 |
+
+All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `estimatedDuration: 4`. Reuse existing play/result flow unchanged. `world-detail.js` needed no changes — it already renders challenges dynamically via `getChallengesByWorld()`.

@@ -1,9 +1,13 @@
 /**
  * data/challenges.js — interactive challenges (play flow entry points)
- * Derived from legacy data/challenges.json.
+ * Each challenge belongs to one anime world via worldId.
+ * Step 3.1: added one challenge per remaining world so no world lands empty.
  */
 
 export const challenges = [
+
+  // ── One Piece ────────────────────────────────────────────
+
   {
     id: 'op-lore-001',
     title: 'تحدي لور ون بيس',
@@ -29,7 +33,7 @@ export const challenges = [
       },
       {
         id: 'q2',
-        text: 'ما هو اسم الجزيرة التي يبحث عنها قراصنة قبعة القش؟',
+        text: 'ما هو اسم الكنز الذي يبحث عنه قراصنة قبعة القش؟',
         options: [
           { id: 'a', text: 'ألاباستا' },
           { id: 'b', text: 'واتر سفن' },
@@ -51,6 +55,7 @@ export const challenges = [
       },
     ],
   },
+
   {
     id: 'veto-round-001',
     title: 'جولة فيتو تمهيدية',
@@ -87,6 +92,7 @@ export const challenges = [
       },
     ],
   },
+
   {
     id: 'guess-character-001',
     title: 'اعرف الشخصية',
@@ -112,6 +118,202 @@ export const challenges = [
       },
     ],
   },
+
+  // ── Naruto ───────────────────────────────────────────────
+
+  {
+    id: 'naruto-lore-001',
+    title: 'تحدي لور ناروتو',
+    description: 'أسئلة تمهيدية حول شخصيات وأحداث عالم ناروتو.',
+    formatType: 'multiple-choice',
+    formatTypeLabel: 'Quiz',
+    difficulty: 'easy',
+    difficultyLabel: 'سهل',
+    estimatedDuration: 4,
+    worldId: 'naruto',
+    relatedMember: 'mohammed-alnami',
+    questions: [
+      {
+        id: 'q1',
+        text: 'ما هو المنصب الذي يحلم ناروتو بالوصول إليه؟',
+        options: [
+          { id: 'a', text: 'ميزوكاجي' },
+          { id: 'b', text: 'هوكاجي' },
+          { id: 'c', text: 'راكاجي' },
+          { id: 'd', text: 'تسوتشيكاجي' },
+        ],
+        correctId: 'b',
+      },
+      {
+        id: 'q2',
+        text: 'كم عدد ذيول الوحش المحبوس في جسد ناروتو؟',
+        options: [
+          { id: 'a', text: '7' },
+          { id: 'b', text: '8' },
+          { id: 'c', text: '9' },
+          { id: 'd', text: '10' },
+        ],
+        correctId: 'c',
+      },
+    ],
+  },
+
+  // ── Attack on Titan ──────────────────────────────────────
+
+  {
+    id: 'aot-lore-001',
+    title: 'تحدي لور هجوم العمالقة',
+    description: 'أسئلة تمهيدية حول الشخصيات والجدران وعالم هجوم العمالقة.',
+    formatType: 'multiple-choice',
+    formatTypeLabel: 'Quiz',
+    difficulty: 'easy',
+    difficultyLabel: 'سهل',
+    estimatedDuration: 4,
+    worldId: 'attack-on-titan',
+    relatedMember: 'mohammed-alnami',
+    questions: [
+      {
+        id: 'q1',
+        text: 'ما هو اسم الجدار الخارجي الذي يخترقه العمالقة في بداية القصة؟',
+        options: [
+          { id: 'a', text: 'جدار شينا' },
+          { id: 'b', text: 'جدار روز' },
+          { id: 'c', text: 'جدار ماريا' },
+          { id: 'd', text: 'جدار إيرين' },
+        ],
+        correctId: 'c',
+      },
+      {
+        id: 'q2',
+        text: 'إلى أي فيلق ينضم إيرين ياغر بعد تخرجه؟',
+        options: [
+          { id: 'a', text: 'الحرس الملكي' },
+          { id: 'b', text: 'فيلق الشرطة' },
+          { id: 'c', text: 'فيلق المسح' },
+          { id: 'd', text: 'فيلق المشاة' },
+        ],
+        correctId: 'c',
+      },
+    ],
+  },
+
+  // ── Jujutsu Kaisen ───────────────────────────────────────
+
+  {
+    id: 'jjk-lore-001',
+    title: 'تحدي لور جوجوتسو كايزن',
+    description: 'أسئلة تمهيدية حول عالم الساحرين والملاعين في جوجوتسو كايزن.',
+    formatType: 'multiple-choice',
+    formatTypeLabel: 'Quiz',
+    difficulty: 'easy',
+    difficultyLabel: 'سهل',
+    estimatedDuration: 4,
+    worldId: 'jujutsu-kaisen',
+    relatedMember: 'majed-alamer',
+    questions: [
+      {
+        id: 'q1',
+        text: 'من هو الساحر الأقوى في عالم جوجوتسو كايزن؟',
+        options: [
+          { id: 'a', text: 'يوجي إيتادوري' },
+          { id: 'b', text: 'ميغومي فوشيغورو' },
+          { id: 'c', text: 'ساتورو غوجو' },
+          { id: 'd', text: 'يوتا أوككوتسو' },
+        ],
+        correctId: 'c',
+      },
+      {
+        id: 'q2',
+        text: 'ما هو اسم الملعون الأسطوري الذي يبتلعه يوجي في بداية القصة؟',
+        options: [
+          { id: 'a', text: 'ماهورا' },
+          { id: 'b', text: 'سوكونا' },
+          { id: 'c', text: 'حانامي' },
+          { id: 'd', text: 'جوغو' },
+        ],
+        correctId: 'b',
+      },
+    ],
+  },
+
+  // ── Demon Slayer ─────────────────────────────────────────
+
+  {
+    id: 'ds-lore-001',
+    title: 'تحدي لور قاتل الشياطين',
+    description: 'أسئلة تمهيدية حول عالم صائدي الشياطين وشخصياته.',
+    formatType: 'multiple-choice',
+    formatTypeLabel: 'Quiz',
+    difficulty: 'easy',
+    difficultyLabel: 'سهل',
+    estimatedDuration: 4,
+    worldId: 'demon-slayer',
+    relatedMember: 'ibrahim-alamer',
+    questions: [
+      {
+        id: 'q1',
+        text: 'ما هو أسلوب التنفس الذي يتقنه تانجيرو في بداية رحلته؟',
+        options: [
+          { id: 'a', text: 'نفس النار' },
+          { id: 'b', text: 'نفس الحجر' },
+          { id: 'c', text: 'نفس الماء' },
+          { id: 'd', text: 'نفس الريح' },
+        ],
+        correctId: 'c',
+      },
+      {
+        id: 'q2',
+        text: 'من هو الشيطان المسؤول عن تحويل عائلة كاميادو؟',
+        options: [
+          { id: 'a', text: 'أكازا' },
+          { id: 'b', text: 'دوما' },
+          { id: 'c', text: 'موزان كيبوتسوجي' },
+          { id: 'd', text: 'ناكيم' },
+        ],
+        correctId: 'c',
+      },
+    ],
+  },
+
+  // ── Dragon Ball ──────────────────────────────────────────
+
+  {
+    id: 'db-lore-001',
+    title: 'تحدي لور دراغون بول',
+    description: 'أسئلة تمهيدية حول شخصيات وأحداث عالم دراغون بول.',
+    formatType: 'multiple-choice',
+    formatTypeLabel: 'Quiz',
+    difficulty: 'easy',
+    difficultyLabel: 'سهل',
+    estimatedDuration: 4,
+    worldId: 'dragon-ball',
+    relatedMember: 'mohammed-alnami',
+    questions: [
+      {
+        id: 'q1',
+        text: 'كم عدد كرات التنين اللازمة لاستدعاء التنين وتحقيق الأمنية؟',
+        options: [
+          { id: 'a', text: '5' },
+          { id: 'b', text: '6' },
+          { id: 'c', text: '7' },
+          { id: 'd', text: '9' },
+        ],
+        correctId: 'c',
+      },
+      {
+        id: 'q2',
+        text: 'ما هو الاسم السايان الحقيقي لغوكو؟',
+        options: [
+          { id: 'a', text: 'راديتز' },
+          { id: 'b', text: 'فيغيتا' },
+          { id: 'c', text: 'كاكاروت' },
+          { id: 'd', text: 'نابا' },
+        ],
+        correctId: 'c',
+      },
+    ],
+  },
+
 ];
 
 /** Get challenge by id */
