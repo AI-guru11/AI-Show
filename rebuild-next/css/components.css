@@ -640,3 +640,52 @@
 .home-crew-avatar {
   border: 2px solid var(--clr-bg-1);
 }
+
+/* ── World Catalog Item (worlds browse screen) ───────────── */
+/* Represents one anime universe — row layout, clean and scalable */
+.world-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-4);
+  background: var(--clr-bg-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  text-align: right;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.world-item:active {
+  border-color: var(--clr-border-hi);
+}
+
+.world-item-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  background: var(--clr-bg-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.world-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.world-item-title {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-0);
+  margin-block-end: 2px;
+}
+
+.world-item-en {
+  font-size: var(--text-xs);
+  color: var(--clr-text-2);
+}

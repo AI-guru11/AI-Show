@@ -1,69 +1,81 @@
 /**
- * data/worlds.js — "العوالم" (content series / browse surface)
- * Derived from legacy data/series.json.
- * Each world is a browseable content series.
+ * data/worlds.js — العوالم (anime universes)
+ *
+ * Architecture rule: each world = one anime franchise.
+ * Channel formats (Veto, Weekly, Dewaniya) are NOT worlds.
+ * Channel formats may appear on Home but never in this catalog.
+ *
+ * Fields:
+ *   id           — kebab-case franchise slug
+ *   title        — Arabic franchise name
+ *   titleEn      — English franchise name (for recognition)
+ *   emoji        — representative icon
+ *   status       — 'ongoing' | 'completed'
+ *   statusLabel  — Arabic status label
+ *   description  — short Arabic description of the universe
+ *   relatedMembers — crew member IDs who cover this anime
  */
 
 export const worlds = [
   {
-    id: 'veto-one-piece',
-    title: 'فيتو مانجا ون بيس',
-    typeLabel: 'Veto',
-    frequency: 'شبه أسبوعي',
-    franchise: 'ون بيس',
-    emoji: '⚔️',
-    description: 'سلسلة مبنية على أسئلة الجمهور والنظريات والاعتراضات بين أعضاء الطاقم.',
-    relatedMembers: ['majed-alamer', 'mohammed-alnami'],
+    id: 'one-piece',
+    title: 'ون بيس',
+    titleEn: 'One Piece',
+    emoji: '🏴‍☠️',
+    status: 'ongoing',
+    statusLabel: 'مستمر',
+    description: 'ملحمة القراصنة الكبرى — مغامرات لوفي وطاقم قبعة القش في رحلتهم نحو كنز الملك روجر.',
+    relatedMembers: ['majed-alamer', 'mohammed-alnami', 'ibrahim-alamer'],
   },
   {
-    id: 'one-piece-impression',
-    title: 'انطباع مانجا ون بيس',
-    typeLabel: 'Weekly',
-    frequency: 'أسبوعي',
-    franchise: 'ون بيس',
-    emoji: '📖',
-    description: 'مراجعة مستمرة لفصول المانجا وتحليل أحداثها وتوقع ما بعدها.',
-    relatedMembers: ['majed-alamer', 'ibrahim-alamer'],
-  },
-  {
-    id: 'anime-dewaniya',
-    title: 'ديوانية الأنمي',
-    typeLabel: 'Discussion',
-    frequency: 'مستمر',
-    franchise: 'أنمي عام',
-    emoji: '🎌',
-    description: 'جلسات نقاشية حول الأعمال الأسبوعية والاتجاهات والآراء الجماعية.',
+    id: 'naruto',
+    title: 'ناروتو',
+    titleEn: 'Naruto',
+    emoji: '🍥',
+    status: 'completed',
+    statusLabel: 'مكتمل',
+    description: 'رحلة ناروتو أوزوماكي من صبي منبوذ إلى أعظم هوكاجي في تاريخ قرية الورقة المخفية.',
     relatedMembers: ['mohammed-alnami', 'ibrahim-alamer'],
   },
   {
-    id: 'manga-dewaniya',
-    title: 'ديوانية المانجا',
-    typeLabel: 'Discussion',
-    frequency: 'مستمر',
-    franchise: 'مانجا عامة',
-    emoji: '📚',
-    description: 'جلسات تركز على المانجا، الفصول، والتحليل العميق للأعمال المقروءة.',
-    relatedMembers: ['majed-alamer'],
-  },
-  {
-    id: 'veto-mixed',
-    title: 'فيتو منوع',
-    typeLabel: 'Veto',
-    frequency: 'مستمر',
-    franchise: 'أنمي عام',
-    emoji: '🔥',
-    description: 'نسخة موسّعة من فيتو تشمل عناوين متنوعة خارج نطاق ون بيس.',
+    id: 'attack-on-titan',
+    title: 'هجوم العمالقة',
+    titleEn: 'Attack on Titan',
+    emoji: '⚔️',
+    status: 'completed',
+    statusLabel: 'مكتمل',
+    description: 'في عالم تحيط به جدران عملاقة، تناضل البشرية بحثاً عن الحرية والحقيقة خلف الأسوار.',
     relatedMembers: ['mohammed-alnami', 'saud-alomar'],
   },
   {
-    id: 'theory-one-piece',
-    title: 'نظريات ون بيس',
-    typeLabel: 'Theory',
-    frequency: 'غير منتظم',
-    franchise: 'ون بيس',
-    emoji: '🔮',
-    description: 'حلقات متخصصة في استعراض وتحليل النظريات الكبرى في عالم ون بيس.',
-    relatedMembers: ['majed-alamer', 'ibrahim-alamer'],
+    id: 'jujutsu-kaisen',
+    title: 'جوجوتسو كايزن',
+    titleEn: 'Jujutsu Kaisen',
+    emoji: '🩸',
+    status: 'ongoing',
+    statusLabel: 'مستمر',
+    description: 'يوجي إيتادوري يدخل عالم الساحرين والملاعين بعد أن يبتلع إصبع الملعون ريو سوكونا.',
+    relatedMembers: ['majed-alamer', 'saud-alomar'],
+  },
+  {
+    id: 'demon-slayer',
+    title: 'قاتل الشياطين',
+    titleEn: 'Demon Slayer',
+    emoji: '🔥',
+    status: 'completed',
+    statusLabel: 'مكتمل',
+    description: 'تانجيرو كاميادو يسلك طريق صائدي الشياطين بعد أن تحولت أخته نيزوكو إلى شيطان.',
+    relatedMembers: ['ibrahim-alamer', 'saud-alomar'],
+  },
+  {
+    id: 'dragon-ball',
+    title: 'دراغون بول',
+    titleEn: 'Dragon Ball',
+    emoji: '⚡',
+    status: 'ongoing',
+    statusLabel: 'مستمر',
+    description: 'ملحمة غوكو الخالدة — من مغامرات الطفل إلى أقوى المقاتلين في الأكوان السبعة.',
+    relatedMembers: ['mohammed-alnami', 'majed-alamer'],
   },
 ];
 

@@ -1,5 +1,8 @@
 /**
- * screens/world-detail.js — single world detail view
+ * screens/world-detail.js — single anime universe detail view
+ *
+ * Shows the anime franchise identity, crew who cover it,
+ * and challenge entry points for this world.
  */
 
 import { getWorld }              from '../data/worlds.js';
@@ -16,7 +19,8 @@ export function render({ worldId } = {}) {
       <div class="empty-state">
         <div class="empty-state-icon">🌍</div>
         <p class="fw-semi">العالم غير موجود</p>
-        <button class="btn btn-ghost mt-4" onclick="window.location.hash='/worlds'">العودة للعوالم</button>
+        <button class="btn btn-ghost mt-4"
+                onclick="window.location.hash='/worlds'">العودة للعوالم</button>
       </div>`);
   }
 
@@ -45,21 +49,29 @@ export function render({ worldId } = {}) {
           <p class="challenge-title">${c.title}</p>
           <p class="challenge-desc">${c.description}</p>
         </button>`).join('')
-    : `<div class="empty-state"><p class="text-dim">لا توجد تحديات بعد</p></div>`;
+    : `<div class="empty-state">
+        <p class="text-dim text-sm">لا توجد تحديات لهذا العالم بعد</p>
+       </div>`;
 
   const html = `
     ${subHeader(world.title, '/worlds')}
 
     <div class="hero-strip" style="margin-block-end:var(--sp-6)">
-      <div style="font-size:3rem;margin-block-end:var(--sp-3)">${world.emoji}</div>
-      <p class="hero-eyebrow">${world.typeLabel} · ${world.frequency}</p>
+      <div style="font-size:3rem;margin-block-end:var(--sp-3)"
+           aria-hidden="true">${world.emoji}</div>
+      <div style="display:flex;align-items:center;gap:var(--sp-2);margin-block-end:var(--sp-3)">
+        <span class="badge ${world.status === 'ongoing' ? 'badge-accent' : 'badge-default'}">
+          ${world.statusLabel}
+        </span>
+        <span class="text-xs text-dim">${world.titleEn}</span>
+      </div>
       <h2 class="hero-title">${world.title}</h2>
       <p class="hero-subtitle">${world.description}</p>
     </div>
 
     <div class="page-section">
       <div class="section-header">
-        <h2 class="section-title">أعضاء الطاقم</h2>
+        <h2 class="section-title">الطاقم المتخصص</h2>
       </div>
       <div class="stack">${membersHTML || '<p class="text-dim text-sm">—</p>'}</div>
     </div>

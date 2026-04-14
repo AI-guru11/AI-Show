@@ -12,7 +12,7 @@ export const members = [
     initials: 'م ن',
     bioShort: 'واجهة قيادية وحضور أساسي في هوية AI Show.',
     vibeTags: ['قيادي', 'مؤسس', 'واجهة'],
-    featuredWorlds: ['veto-one-piece', 'anime-dewaniya'],
+    featuredWorlds: ['one-piece', 'naruto'],
     socialLinks: { all: 'https://instabio.cc/4112412SVgKDk' },
   },
   {
@@ -23,7 +23,7 @@ export const members = [
     initials: 'م ع',
     bioShort: 'حاضر بقوة في التحليل، النظريات، وسلسلة فيتو.',
     vibeTags: ['نظريات', 'فيتو', 'مانجا'],
-    featuredWorlds: ['veto-one-piece', 'one-piece-impression', 'theory-one-piece'],
+    featuredWorlds: ['one-piece', 'dragon-ball'],
     socialLinks: { all: 'https://linkfly.to/40208fnHvGN' },
   },
   {
@@ -34,7 +34,7 @@ export const members = [
     initials: 'إ ع',
     bioShort: 'جزء محوري من الطاقم المؤسس والمحتوى المستمر.',
     vibeTags: ['مؤسس', 'فريق', 'استمرارية'],
-    featuredWorlds: ['veto-one-piece', 'anime-dewaniya'],
+    featuredWorlds: ['one-piece', 'attack-on-titan'],
     socialLinks: { all: 'https://linkfly.to/40314eKJ1O6' },
   },
   {
@@ -45,7 +45,7 @@ export const members = [
     initials: 'س ع',
     bioShort: 'وجه بارز في التغطية الفورية وأسئلة الجمهور.',
     vibeTags: ['تغطية', 'جمهور', 'تفاعل'],
-    featuredWorlds: ['veto-mixed'],
+    featuredWorlds: ['jujutsu-kaisen', 'demon-slayer'],
     socialLinks: {},
   },
 ];

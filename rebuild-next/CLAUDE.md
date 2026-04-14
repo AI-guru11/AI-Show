@@ -6,18 +6,21 @@ Practical project reference for Claude sessions. Documents current implementatio
 ## 1. Project Purpose
 
 AI Show is an Arabic-first, mobile-first fan platform for an anime content crew.
-It surfaces worlds (content series), crew members, fan questions, and interactive challenges.
+It surfaces worlds (anime franchises), crew members, fan questions, and interactive challenges.
+
+**Architecture rule:** Worlds = anime catalog (One Piece, Naruto, etc.).
+Channel formats (Veto, Weekly, Dewaniya) are NOT worlds — they may appear on Home only.
 The rebuild-next folder is a clean rewrite: no framework, no build tools, no backend.
 
 ---
 
-## 2. Current Scope (Step 2 complete)
+## 2. Current Scope (Step 3 complete)
 
 | Surface        | Status     | Notes                                  |
 |----------------|------------|----------------------------------------|
 | Home           | ✅ Step 2   | Decision screen, challenge-first       |
-| Worlds         | ✅ Step 0   | Browse list only                       |
-| World Detail   | ✅ Step 0   | Challenges + members per world         |
+| Worlds         | ✅ Step 3   | Anime universe catalog                 |
+| World Detail   | ✅ Step 3   | Anime-specific challenge entry         |
 | Crew           | ✅ Step 0   | Founder + member list                  |
 | Member Detail  | ✅ Step 0   | Bio, worlds, questions                 |
 | Fan Questions  | ✅ Step 0   | Read-only list, no submission yet      |
@@ -75,7 +78,7 @@ rebuild-next/
 │       ├── bottom-nav.js   4-tab nav markup, updateNav(), mountBottomNav()
 │       └── page-shell.js   wrapPage(), subHeader(), skeletonBlock()
 ├── data/
-│   ├── worlds.js           6 world objects + getWorld(id)
+│   ├── worlds.js           6 anime universe objects + getWorld(id) — fields: id,title,titleEn,emoji,status,statusLabel,description,relatedMembers
 │   ├── challenges.js       3 challenges + getChallenge(id) + getChallengesByWorld()
 │   ├── members.js          4 members + getMember(id)
 │   └── questions.js        5 questions + getOpenQuestions() + getQuestionsForMember()
@@ -212,7 +215,7 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 2. **Read before writing.** Always read current file contents before editing.
 3. **Append to components.css**, never reorder or remove existing rules.
 4. **New tokens go in tokens.css only** — no hard-coded colors/sizes elsewhere.
-5. **Data changes = extend only.** Add fields or items; never rename existing IDs.
+5. **Data changes = extend only** — exception: world IDs were corrected in Step 3 (architecture fix). Future data changes should extend, not rename.
 6. **Selection logic must be ID-anchored** — never rely on array index order alone.
 7. **Each screen owns its events** — wire in `mount()`, not in `render()`.
 8. **Shell changes must be minimal** — if a shared shell file needs changing, justify why.
@@ -233,3 +236,25 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 | 6 | Fan questions are read-only | Submission requires backend | Deferred until backend/API step |
 | 7 | No search surface | Out of scope for Step 2 | Planned for a later step |
 | 8 | `play.js` inline re-render on question advance | Simple approach without extra abstraction | Refactor when play screen gets Step N attention |
+| 9 | All 3 challenges share `worldId: 'one-piece'` | Seed data only covers One Piece topics | Add challenges for Naruto, AoT etc. in a data step |
+| 10 | `worlds.js` has no poster images | Static build, no CDN/assets yet | Add `posterUrl` field when images are available |
+
+---
+
+## 13. Step 3 — Worlds Architecture Correction
+
+**What changed:**
+
+- `data/worlds.js` — replaced 6 channel-format worlds with 6 anime universe worlds.
+  Old schema: `typeLabel`, `frequency`, `franchise` (channel format fields, now removed).
+  New schema: `titleEn`, `status`, `statusLabel` (anime universe fields).
+- `data/challenges.js` — updated 3 `worldId` references from old format IDs to new anime IDs.
+- `data/members.js` — updated all 4 `featuredWorlds` arrays to reference new anime IDs.
+- `screens/worlds.js` — anime catalog layout: `.world-item` row cards with emoji icon, Arabic title, English subtitle, status badge.
+- `screens/world-detail.js` — anime-aware hero block: emoji, status badge, English subtitle, description. "الطاقم المتخصص" + challenges sections unchanged in structure.
+- `css/components.css` — appended `.world-item`, `.world-item-icon`, `.world-item-body`, `.world-item-title`, `.world-item-en`.
+
+**New world IDs:**
+`one-piece`, `naruto`, `attack-on-titan`, `jujutsu-kaisen`, `demon-slayer`, `dragon-ball`
+
+**Screens NOT changed:** Crew, Member, Fan Questions, Play, Result, Home.

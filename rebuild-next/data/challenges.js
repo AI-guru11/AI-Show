@@ -13,7 +13,7 @@ export const challenges = [
     difficulty: 'medium',
     difficultyLabel: 'متوسط',
     estimatedDuration: 6,
-    worldId: 'veto-one-piece',
+    worldId: 'one-piece',
     relatedMember: 'majed-alamer',
     questions: [
       {
@@ -60,7 +60,7 @@ export const challenges = [
     difficulty: 'medium',
     difficultyLabel: 'متوسط',
     estimatedDuration: 5,
-    worldId: 'veto-mixed',
+    worldId: 'one-piece',
     relatedMember: 'mohammed-alnami',
     questions: [
       {
@@ -96,7 +96,7 @@ export const challenges = [
     difficulty: 'easy',
     difficultyLabel: 'سهل',
     estimatedDuration: 4,
-    worldId: 'anime-dewaniya',
+    worldId: 'one-piece',
     relatedMember: 'saud-alomar',
     questions: [
       {
