@@ -42,9 +42,9 @@ export function render({ worldId } = {}) {
   const challengesHTML = worldChallenges.length
     ? worldChallenges.map(c => `
         <button class="challenge-card pointer" data-nav="/challenges/${c.id}">
-          <div class="flex justify-between items-center mb-2">
+          <div class="wd-challenge-top">
             <span class="badge badge-accent">${c.formatTypeLabel}</span>
-            <span class="text-xs text-dim">${c.estimatedDuration} دقائق</span>
+            <span class="text-xs text-dim">${c.estimatedDuration} دقائق · ${c.difficultyLabel}</span>
           </div>
           <p class="challenge-title">${c.title}</p>
           <p class="challenge-desc">${c.description}</p>
@@ -56,10 +56,9 @@ export function render({ worldId } = {}) {
   const html = `
     ${subHeader(world.title, '/worlds')}
 
-    <div class="hero-strip" style="margin-block-end:var(--sp-6)">
-      <div style="font-size:3rem;margin-block-end:var(--sp-3)"
-           aria-hidden="true">${world.emoji}</div>
-      <div style="display:flex;align-items:center;gap:var(--sp-2);margin-block-end:var(--sp-3)">
+    <div class="hero-strip wd-hero">
+      <div class="wd-hero-icon" aria-hidden="true">${world.emoji}</div>
+      <div class="wd-hero-meta">
         <span class="badge ${world.status === 'ongoing' ? 'badge-accent' : 'badge-default'}">
           ${world.statusLabel}
         </span>

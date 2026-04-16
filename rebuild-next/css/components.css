@@ -185,6 +185,9 @@
 
 /* ── Challenge Card ──────────────────────────────────────── */
 .challenge-card {
+  display: block;
+  width: 100%;
+  text-align: right;
   padding: var(--sp-4);
   background: var(--clr-bg-2);
   border-radius: var(--r-lg);
@@ -303,6 +306,10 @@
 
 /* ── Play / Result states ────────────────────────────────── */
 .quiz-option {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
   padding: var(--sp-4);
   background: var(--clr-bg-2);
   border-radius: var(--r-lg);
@@ -312,6 +319,11 @@
   transition: border-color var(--dur-fast) var(--ease-out),
               background var(--dur-fast) var(--ease-out);
   text-align: right;
+}
+
+.quiz-option > span:last-child {
+  flex: 1;
+  min-width: 0;
 }
 
 .quiz-option:active { border-color: var(--clr-accent); }
@@ -337,6 +349,16 @@
   align-items: center;
   padding: var(--sp-8);
   gap: var(--sp-2);
+}
+
+.result-emoji {
+  font-size: 3rem;
+}
+
+.result-percent {
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  color: var(--clr-accent);
 }
 
 .score-number {
@@ -841,6 +863,30 @@
   padding: 2px var(--sp-2);
 }
 
+.wd-hero {
+  margin-block-end: var(--sp-6);
+}
+
+.wd-hero-icon {
+  font-size: 3rem;
+  margin-block-end: var(--sp-3);
+}
+
+.wd-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-block-end: var(--sp-3);
+}
+
+.wd-challenge-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-block-end: var(--sp-2);
+}
+
 /* ── Step 6: Challenge Detail ────────────────────────────── */
 
 /* Hero block — challenge identity dominates */
@@ -997,6 +1043,10 @@
 }
 
 .quiz-option.wrong .quiz-opt-letter {
-  background: var(--clr-error, #ef4444);
+  background: var(--clr-danger, #ef4444);
   color: #fff;
+}
+
+.quiz-option-static {
+  cursor: default;
 }

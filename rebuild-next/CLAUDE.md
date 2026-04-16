@@ -14,18 +14,18 @@ The rebuild-next folder is a clean rewrite: no framework, no build tools, no bac
 
 ---
 
-## 2. Current Scope (Step 6 complete)
+## 2. Current Scope (Step 7 complete)
 
 | Surface        | Status     | Notes                                        |
 |----------------|------------|----------------------------------------------|
 | Home           | ✅ Step 2   | Decision screen, challenge-first             |
 | Worlds         | ✅ Step 3   | Anime universe catalog                       |
-| World Detail   | ✅ Step 3   | Anime-specific challenge entry               |
+| World Detail   | ✅ Step 7   | Anime-specific challenge entry, polished meta |
 | Crew           | ✅ Step 4   | Two-tier: founders + presenters              |
 | Member Detail  | ✅ Step 4   | Profile, worlds, challenges, questions       |
 | Fan Questions  | ✅ Step 5   | Readable surface with world/member context   |
-| Challenge      | ✅ Step 6   | Identity-dominant detail + clear CTA         |
-| Play / Result  | ✅ Step 6   | Arabic letter markers, CSS progress bar      |
+| Challenge      | ✅ Step 7   | Polished entry surface, aligned CTA and meta  |
+| Play / Result  | ✅ Step 7   | Consistent option layout, review, result copy |
 | Profile        | ❌ Not built | Avatar wired to /crew as placeholder         |
 | Search         | ❌ Not built |                                              |
 | Notifications  | ❌ Not built |                                              |
@@ -204,7 +204,6 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 - `js/app/bootstrap.js`, `js/app/router.js`
 - `js/core/dom.js`, `js/core/storage.js`, `js/core/state.js`, `js/core/routes.js`
 - `js/shared/bottom-nav.js`, `js/shared/page-shell.js`
-- `screens/challenge-detail.js`, `screens/play.js`, `screens/result.js` (not yet targeted by a step)
 - `data/*.js` — extend carefully; world IDs were corrected in Step 3 as architecture fix
 
 ---
@@ -232,12 +231,11 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 | 2 | `play.js` session state not persisted | localStorage integration deferred | Add in a dedicated state/persistence step |
 | 3 | Member avatars are initials only | No images in static data | Add image URLs to data/members.js when available |
 | 4 | Header avatar navigates to `/crew` | No profile surface exists yet | Replace with `/profile` route when built |
-| 5 | Each non-One Piece world has 1 challenge (2 questions) | Minimum coverage — Step 3.1 | Expand per world in a data step |
-| 6 | Fan questions are read-only, no submission | Submission requires backend | Deferred until backend/API step |
-| 7 | No search surface | Not yet targeted | Planned for a later step |
-| 8 | `play.js` inline re-render on question advance | Simple approach without extra abstraction | Refactor when play screen gets Step N attention |
-| 9 | Each non-One Piece world has exactly 1 challenge (2 questions) | Minimum coverage pass — Step 3.1 | Expand per world in a dedicated data step |
-| 10 | `worlds.js` has no poster images | Static build, no CDN/assets yet | Add `posterUrl` field when images are available |
+| 5 | Fan questions are read-only, no submission | Submission requires backend | Deferred until backend/API step |
+| 6 | No search surface | Not yet targeted | Planned for a later step |
+| 7 | `play.js` inline re-render on question advance | Simple approach without extra abstraction | Refactor when play screen gets Step N attention |
+| 8 | Each non-One Piece world has exactly 1 challenge (2 questions) | Minimum coverage pass — Step 3.1 | Expand per world in a dedicated data step |
+| 9 | `worlds.js` has no poster images | Static build, no CDN/assets yet | Add `posterUrl` field when images are available |
 
 ---
 
@@ -328,8 +326,23 @@ All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `esti
 
 - `screens/play.js` — Polish pass. Arabic letter markers: `LETTERS = ['أ', 'ب', 'ج', 'د']` map to `.quiz-opt-letter` circles inside each option. Letter circle color updates on selected/correct/wrong states. Inline progress bar styles replaced with `.play-progress`, `.play-progress-bar`, `.play-progress-fill` CSS classes. Question text uses `.play-question` class (larger, bolder). Same state flow/900ms feedback delay preserved.
 
-- `screens/result.js` — Minimal consistency fix. `subHeader` back label changed from `'النتيجة'` → `c.title`, back path from `'/'` → `/challenges/${challengeId}`. Second action button label changed from `'الرئيسية'` → `'التحدي'`, destination changed from `'/'` → `/challenges/${challengeId}`.
+- `screens/result.js` — Minimal consistency fix. `subHeader` back label changed from `'النتيجة'` → `c.title`, back path from `'/'` → `/challenges/${challengeId}`. Result buttons now return to replay or challenge detail; final label refined further in Step 7.
 
 - `css/components.css` — appended challenge-detail classes: `.cd-hero`, `.cd-title`, `.cd-desc`, `.cd-meta`, `.cd-meta-pill`, `.cd-meta-val`, `.cd-meta-label`, `.cd-context`, `.cd-context-btn`. Appended play classes: `.play-progress`, `.play-q-counter`, `.play-progress-bar`, `.play-progress-fill`, `.play-question`, `.quiz-opt-letter` (+ selected/correct/wrong state variants).
 
 **Data files NOT changed.** Screens NOT changed: Home, Worlds, World Detail, Crew, Member, Fan Questions.
+
+
+## 18. Step 7 — Cross-surface Polish + Consistency
+
+**What changed:**
+
+- `css/components.css` — consistency pass additions/fixes: `.challenge-card` now fills width and aligns text correctly; `.quiz-option` now uses flex layout with proper label/text alignment; result helpers `.result-emoji`, `.result-percent`; world-detail helpers `.wd-hero`, `.wd-hero-icon`, `.wd-hero-meta`, `.wd-challenge-top`; typo fixed from `--clr-error` → `--clr-danger`; review-only `.quiz-option-static` added.
+
+- `screens/world-detail.js` — removed inline hero styles in favor of CSS classes; challenge cards now show duration + difficulty together for better consistency with Challenge/Play surfaces.
+
+- `screens/fan-questions.js` — intro copy simplified to remove redundant instructional wording.
+
+- `screens/result.js` — answer review now uses the same Arabic letter circles as play; inline score styles replaced with CSS classes; secondary button label clarified to `تفاصيل التحدي`.
+
+**Screens intentionally not redesigned again:** Home, Worlds, Crew, Member, Play flow structure. Step 7 is polish/consistency only.

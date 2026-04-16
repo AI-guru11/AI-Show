@@ -73,7 +73,7 @@ export function render() {
       <span class="badge badge-accent">${open.length}</span>
     </div>
     <p class="text-sm text-muted mb-6">
-      أسئلة يطرحها الجمهور على الطاقم — اضغط على العالم أو العضو للانتقال.
+      أسئلة يطرحها الجمهور على الطاقم.
     </p>
 
     <div class="stack">${cards}</div>

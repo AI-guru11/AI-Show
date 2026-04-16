@@ -7,6 +7,8 @@ import { wrapPage, subHeader } from '../js/shared/page-shell.js';
 import { navigate }            from '../js/core/dom.js';
 import { getState }            from '../js/core/state.js';
 
+const LETTERS = ['أ', 'ب', 'ج', 'د'];
+
 export function render({ challengeId } = {}) {
   const c       = getChallenge(challengeId);
   const session = getState().playSession;
@@ -26,17 +28,19 @@ export function render({ challengeId } = {}) {
     const given  = answers[i];
     const isRight = given === q.correctId;
     if (isRight) correct++;
-    const givenOpt   = q.options.find(o => o.id === given);
-    const correctOpt = q.options.find(o => o.id === q.correctId);
     return `
       <div class="card card-body mb-3">
         <p class="text-sm fw-medium mb-3">${q.text}</p>
         <div class="stack gap-2">
-          ${q.options.map(opt => {
+          ${q.options.map((opt, idx) => {
             let cls = '';
             if (opt.id === q.correctId) cls = 'correct';
             else if (opt.id === given && !isRight) cls = 'wrong';
-            return `<div class="quiz-option ${cls}" style="cursor:default">${opt.text}</div>`;
+            return `
+              <div class="quiz-option quiz-option-static ${cls}">
+                <span class="quiz-opt-letter">${LETTERS[idx] || ''}</span>
+                <span>${opt.text}</span>
+              </div>`;
           }).join('')}
         </div>
       </div>`;
@@ -49,10 +53,10 @@ export function render({ challengeId } = {}) {
     ${subHeader(c.title, `/challenges/${challengeId}`)}
 
     <div class="result-score">
-      <div style="font-size:3rem">${emoji}</div>
+      <div class="result-emoji">${emoji}</div>
       <p class="score-number">${correct}/${c.questions.length}</p>
       <p class="score-label">إجاباتك الصحيحة</p>
-      <div style="font-size:2rem;font-weight:700;color:var(--clr-accent)">${pct}%</div>
+      <div class="result-percent">${pct}%</div>
     </div>
 
     <div class="flex gap-3 mb-8">
@@ -60,7 +64,7 @@ export function render({ challengeId } = {}) {
         حاول مجدداً
       </button>
       <button class="btn btn-ghost flex-1" id="back-btn">
-        التحدي
+        تفاصيل التحدي
       </button>
     </div>
 
