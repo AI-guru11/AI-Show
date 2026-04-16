@@ -14,15 +14,15 @@ The rebuild-next folder is a clean rewrite: no framework, no build tools, no bac
 
 ---
 
-## 2. Current Scope (Step 3 complete)
+## 2. Current Scope (Step 4 complete)
 
 | Surface        | Status     | Notes                                  |
 |----------------|------------|----------------------------------------|
 | Home           | ✅ Step 2   | Decision screen, challenge-first       |
 | Worlds         | ✅ Step 3   | Anime universe catalog                 |
 | World Detail   | ✅ Step 3   | Anime-specific challenge entry         |
-| Crew           | ✅ Step 0   | Founder + member list                  |
-| Member Detail  | ✅ Step 0   | Bio, worlds, questions                 |
+| Crew           | ✅ Step 4   | Two-tier: founders + presenters        |
+| Member Detail  | ✅ Step 4   | Profile, worlds, challenges, questions |
 | Fan Questions  | ✅ Step 0   | Read-only list, no submission yet      |
 | Challenge      | ✅ Step 0   | Detail view + play flow + result       |
 | Play / Result  | ✅ Step 0   | Static questions, session state only   |
@@ -80,7 +80,7 @@ rebuild-next/
 ├── data/
 │   ├── worlds.js           6 anime universe objects + getWorld(id) — fields: id,title,titleEn,emoji,status,statusLabel,description,relatedMembers
 │   ├── challenges.js       8 challenges + getChallenge(id) + getChallengesByWorld() — one per world minimum
-│   ├── members.js          4 members + getMember(id)
+│   ├── members.js          15 members (3 founders + 12 presenters) + getMember(id)
 │   └── questions.js        5 questions + getOpenQuestions() + getQuestionsForMember()
 └── screens/
     ├── home.js             الرئيسية — Step 2 rebuild
@@ -274,3 +274,34 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 | `db-lore-001` | `dragon-ball` | 2 |
 
 All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `estimatedDuration: 4`. Reuse existing play/result flow unchanged. `world-detail.js` needed no changes — it already renders challenges dynamically via `getChallengesByWorld()`.
+
+## 15. Step 4 — Crew + Member Rebuild
+
+**What changed:**
+
+- `data/members.js` — expanded from 4 → 15 members (source: member manifest).
+  Founders (3): Mohammed, Majed, Ibrahim.
+  Presenters (12): Saud + 11 new members with real names, roles, social hub links.
+  Bios cleaned: internal planning language replaced with minimal safe copy.
+  `vibeTags` cleaned: no invented lore, no rank/power language.
+  `featuredWorlds` kept for original 4 members; empty `[]` for new members (graceful skip).
+
+- `screens/crew.js` — two-tier hierarchy:
+  Founders → full `.member-card` with specialties (vibeTags).
+  Presenters → compact `.crew-list-item` rows (36px avatar, name, role, chevron, no tags).
+  Section labels: "المؤسسون" (accent) + "المقدمون · N" (dim with count).
+
+- `screens/member.js` — editorial profile page:
+  `.member-profile-hero`: 80px avatar, name, founder badge (if applicable), role, bio, specialties, quiet social link.
+  Worlds strip: `.home-world-pill` horizontal scroll (skipped if empty).
+  Challenges: `.member-challenge-row` compact rows filtered by `relatedMember` (skipped if empty).
+  Questions: existing `.question-card` (skipped if empty).
+  `challenges` array imported directly; no new helper added to challenges.js.
+
+- `css/components.css` — appended:
+  `.crew-list-item` + `.crew-list-avatar` (compact presenter row),
+  `.member-profile-hero` (centered identity block),
+  `.member-social-btn` (quiet external link),
+  `.member-challenge-row` (compact challenge entry on member page).
+
+**Screens NOT changed:** Home, Worlds, World Detail, Fan Questions, Play, Result.

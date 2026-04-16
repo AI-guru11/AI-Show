@@ -689,3 +689,80 @@
   font-size: var(--text-xs);
   color: var(--clr-text-2);
 }
+
+/* ── Crew List Item (presenter / non-founder compact row) ─── */
+/* Lighter visual weight than .member-card — scalable for large rosters */
+.crew-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--clr-bg-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.crew-list-item:active {
+  border-color: var(--clr-border-hi);
+}
+
+/* 36px avatar override for compact rows */
+.crew-list-avatar {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 0.65rem !important;
+}
+
+/* ── Member Profile Hero ──────────────────────────────────── */
+/* Centered identity block at top of member detail page */
+.member-profile-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-6) var(--sp-4) var(--sp-4);
+  text-align: center;
+  margin-block-end: var(--sp-2);
+}
+
+/* ── Member Social Button ─────────────────────────────────── */
+/* Quiet external link — does not compete with challenges/worlds */
+.member-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-md);
+  font-size: var(--text-xs);
+  color: var(--clr-text-2);
+  border: 1px solid var(--clr-border);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+
+.member-social-btn:active {
+  color: var(--clr-text-0);
+  border-color: var(--clr-border-hi);
+}
+
+/* ── Member Challenge Row ─────────────────────────────────── */
+/* Compact single-line challenge entry — lighter than full .challenge-card */
+.member-challenge-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--clr-bg-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.member-challenge-row:active {
+  border-color: var(--clr-border-hi);
+}
