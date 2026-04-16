@@ -1,12 +1,14 @@
 /**
  * screens/play.js — interactive quiz play session
- * Step 0: minimal state, answer tracking, next/submit flow.
+ * Step 6: Arabic letter markers, play-question class, CSS progress bar classes.
  */
 
 import { getChallenge }        from '../data/challenges.js';
 import { wrapPage, subHeader } from '../js/shared/page-shell.js';
 import { navigate }            from '../js/core/dom.js';
 import { startPlaySession, recordAnswer, getState } from '../js/core/state.js';
+
+const LETTERS = ['أ', 'ب', 'ج', 'د'];
 
 export function render({ challengeId } = {}) {
   const c = getChallenge(challengeId);
@@ -27,29 +29,28 @@ export function render({ challengeId } = {}) {
 function renderQuestion(challenge, index) {
   const q     = challenge.questions[index];
   const total = challenge.questions.length;
+  const pct   = Math.round((index / total) * 100);
 
   return `
     <div data-challenge="${challenge.id}" data-q-index="${index}" data-q-total="${total}">
       ${subHeader(challenge.title, `/challenges/${challenge.id}`)}
 
-      <div class="flex justify-between items-center mb-4">
-        <span class="text-xs text-dim">سؤال ${index + 1} من ${total}</span>
+      <div class="play-progress">
+        <span class="play-q-counter">سؤال ${index + 1} من ${total}</span>
         <span class="text-xs text-accent">${challenge.difficultyLabel}</span>
       </div>
 
-      <div style="background:var(--clr-bg-3);border-radius:var(--r-sm);height:4px;margin-block-end:var(--sp-6)">
-        <div style="height:100%;border-radius:var(--r-sm);background:var(--clr-accent);
-                    width:${Math.round(((index) / total) * 100)}%;
-                    transition:width var(--dur-normal) var(--ease-out)">
-        </div>
+      <div class="play-progress-bar">
+        <div class="play-progress-fill" style="width:${pct}%"></div>
       </div>
 
-      <p class="fw-semi text-md mb-6" style="line-height:var(--lh-relaxed)">${q.text}</p>
+      <p class="play-question">${q.text}</p>
 
       <div class="stack mb-8" id="options-list">
-        ${q.options.map(opt => `
+        ${q.options.map((opt, i) => `
           <button class="quiz-option" data-opt-id="${opt.id}">
-            ${opt.text}
+            <span class="quiz-opt-letter">${LETTERS[i] || ''}</span>
+            <span>${opt.text}</span>
           </button>`).join('')}
       </div>
 
@@ -68,7 +69,6 @@ export function mount({ challengeId } = {}) {
   container.addEventListener('click', e => {
     const opt = e.target.closest('.quiz-option');
     if (opt) {
-      // Deselect all, select clicked
       container.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
       opt.classList.add('selected');
       selected = opt.dataset.optId;
@@ -88,7 +88,6 @@ export function mount({ challengeId } = {}) {
       if (!c) return;
 
       const q = c.questions[idx];
-      // Show correct/wrong briefly
       container.querySelectorAll('.quiz-option').forEach(btn => {
         if (btn.dataset.optId === q.correctId) btn.classList.add('correct');
         else if (btn.dataset.optId === selected) btn.classList.add('wrong');
@@ -99,7 +98,6 @@ export function mount({ challengeId } = {}) {
       setTimeout(() => {
         selected = null;
         if (idx + 1 < total) {
-          // Re-render inside the existing .page wrapper
           const page = container.querySelector('.page');
           if (page) page.innerHTML = renderQuestion(c, idx + 1);
           else container.innerHTML = wrapPage(renderQuestion(c, idx + 1), 'play-screen');

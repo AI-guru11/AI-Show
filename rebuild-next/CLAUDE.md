@@ -14,7 +14,7 @@ The rebuild-next folder is a clean rewrite: no framework, no build tools, no bac
 
 ---
 
-## 2. Current Scope (Step 5 complete)
+## 2. Current Scope (Step 6 complete)
 
 | Surface        | Status     | Notes                                        |
 |----------------|------------|----------------------------------------------|
@@ -24,8 +24,8 @@ The rebuild-next folder is a clean rewrite: no framework, no build tools, no bac
 | Crew           | ✅ Step 4   | Two-tier: founders + presenters              |
 | Member Detail  | ✅ Step 4   | Profile, worlds, challenges, questions       |
 | Fan Questions  | ✅ Step 5   | Readable surface with world/member context   |
-| Challenge      | ✅ Step 0   | Detail view + play flow + result             |
-| Play / Result  | ✅ Step 0   | Static questions, session state only         |
+| Challenge      | ✅ Step 6   | Identity-dominant detail + clear CTA         |
+| Play / Result  | ✅ Step 6   | Arabic letter markers, CSS progress bar      |
 | Profile        | ❌ Not built | Avatar wired to /crew as placeholder         |
 | Search         | ❌ Not built |                                              |
 | Notifications  | ❌ Not built |                                              |
@@ -319,3 +319,17 @@ All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `esti
 - `CLAUDE.md` — cleaned up: frozen-files list updated to reflect actual state; compromise row 5 corrected (was "3 challenges", now accurate); Step 5 section added.
 
 **Screens NOT changed:** Home, Worlds, World Detail, Crew, Member, Play, Result.
+
+## 17. Step 6 — Challenge Detail + Play Polish
+
+**What changed:**
+
+- `screens/challenge-detail.js` — full rebuild. Challenge identity dominates: `.cd-hero` block (format badge + large `.cd-title` + clamped `.cd-desc`). Three horizontal `.cd-meta-pill` (questions count, duration, difficulty). `.cd-context` row: world + member as compact tappable `.cd-context-btn` pills; null associations omitted. Back label uses world title when available (breadcrumb feel). Full-width `btn btn-primary btn-full` CTA.
+
+- `screens/play.js` — Polish pass. Arabic letter markers: `LETTERS = ['أ', 'ب', 'ج', 'د']` map to `.quiz-opt-letter` circles inside each option. Letter circle color updates on selected/correct/wrong states. Inline progress bar styles replaced with `.play-progress`, `.play-progress-bar`, `.play-progress-fill` CSS classes. Question text uses `.play-question` class (larger, bolder). Same state flow/900ms feedback delay preserved.
+
+- `screens/result.js` — Minimal consistency fix. `subHeader` back label changed from `'النتيجة'` → `c.title`, back path from `'/'` → `/challenges/${challengeId}`. Second action button label changed from `'الرئيسية'` → `'التحدي'`, destination changed from `'/'` → `/challenges/${challengeId}`.
+
+- `css/components.css` — appended challenge-detail classes: `.cd-hero`, `.cd-title`, `.cd-desc`, `.cd-meta`, `.cd-meta-pill`, `.cd-meta-val`, `.cd-meta-label`, `.cd-context`, `.cd-context-btn`. Appended play classes: `.play-progress`, `.play-q-counter`, `.play-progress-bar`, `.play-progress-fill`, `.play-question`, `.quiz-opt-letter` (+ selected/correct/wrong state variants).
+
+**Data files NOT changed.** Screens NOT changed: Home, Worlds, World Detail, Crew, Member, Fan Questions.

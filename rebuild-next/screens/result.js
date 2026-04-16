@@ -46,7 +46,7 @@ export function render({ challengeId } = {}) {
   const emoji = pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪';
 
   const html = `
-    ${subHeader('النتيجة', '/')}
+    ${subHeader(c.title, `/challenges/${challengeId}`)}
 
     <div class="result-score">
       <div style="font-size:3rem">${emoji}</div>
@@ -59,8 +59,8 @@ export function render({ challengeId } = {}) {
       <button class="btn btn-primary flex-1" id="retry-btn">
         حاول مجدداً
       </button>
-      <button class="btn btn-ghost flex-1" id="home-btn">
-        الرئيسية
+      <button class="btn btn-ghost flex-1" id="back-btn">
+        التحدي
       </button>
     </div>
 
@@ -78,7 +78,7 @@ export function mount({ challengeId } = {}) {
   document.getElementById('retry-btn')?.addEventListener('click', () => {
     navigate(`/play/${challengeId}`);
   });
-  document.getElementById('home-btn')?.addEventListener('click', () => {
-    navigate('/');
+  document.getElementById('back-btn')?.addEventListener('click', () => {
+    navigate(`/challenges/${challengeId}`);
   });
 }
