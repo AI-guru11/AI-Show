@@ -14,21 +14,21 @@ The rebuild-next folder is a clean rewrite: no framework, no build tools, no bac
 
 ---
 
-## 2. Current Scope (Step 4 complete)
+## 2. Current Scope (Step 5 complete)
 
-| Surface        | Status     | Notes                                  |
-|----------------|------------|----------------------------------------|
-| Home           | ✅ Step 2   | Decision screen, challenge-first       |
-| Worlds         | ✅ Step 3   | Anime universe catalog                 |
-| World Detail   | ✅ Step 3   | Anime-specific challenge entry         |
-| Crew           | ✅ Step 4   | Two-tier: founders + presenters        |
-| Member Detail  | ✅ Step 4   | Profile, worlds, challenges, questions |
-| Fan Questions  | ✅ Step 0   | Read-only list, no submission yet      |
-| Challenge      | ✅ Step 0   | Detail view + play flow + result       |
-| Play / Result  | ✅ Step 0   | Static questions, session state only   |
-| Profile        | ❌ Not built | Avatar wired to /crew as placeholder   |
-| Search         | ❌ Not built |                                        |
-| Notifications  | ❌ Not built |                                        |
+| Surface        | Status     | Notes                                        |
+|----------------|------------|----------------------------------------------|
+| Home           | ✅ Step 2   | Decision screen, challenge-first             |
+| Worlds         | ✅ Step 3   | Anime universe catalog                       |
+| World Detail   | ✅ Step 3   | Anime-specific challenge entry               |
+| Crew           | ✅ Step 4   | Two-tier: founders + presenters              |
+| Member Detail  | ✅ Step 4   | Profile, worlds, challenges, questions       |
+| Fan Questions  | ✅ Step 5   | Readable surface with world/member context   |
+| Challenge      | ✅ Step 0   | Detail view + play flow + result             |
+| Play / Result  | ✅ Step 0   | Static questions, session state only         |
+| Profile        | ❌ Not built | Avatar wired to /crew as placeholder         |
+| Search         | ❌ Not built |                                              |
+| Notifications  | ❌ Not built |                                              |
 
 ---
 
@@ -81,14 +81,14 @@ rebuild-next/
 │   ├── worlds.js           6 anime universe objects + getWorld(id) — fields: id,title,titleEn,emoji,status,statusLabel,description,relatedMembers
 │   ├── challenges.js       8 challenges + getChallenge(id) + getChallengesByWorld() — one per world minimum
 │   ├── members.js          15 members (3 founders + 12 presenters) + getMember(id)
-│   └── questions.js        5 questions + getOpenQuestions() + getQuestionsForMember()
+│   └── questions.js        10 questions + getOpenQuestions() + getQuestionsForMember()
 └── screens/
     ├── home.js             الرئيسية — Step 2 rebuild
     ├── worlds.js           العوالم — browse list
     ├── world-detail.js     Single world + its challenges + members
     ├── crew.js             Crew list (founders + others)
     ├── member.js           Single member detail
-    ├── fan-questions.js    Fan questions read list
+    ├── fan-questions.js    أسئلة الجمهور — Step 5 surface, world/member context
     ├── challenge-detail.js Challenge preview + start CTA
     ├── play.js             Interactive quiz session
     └── result.js           Quiz result + answer review
@@ -204,8 +204,8 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 - `js/app/bootstrap.js`, `js/app/router.js`
 - `js/core/dom.js`, `js/core/storage.js`, `js/core/state.js`, `js/core/routes.js`
 - `js/shared/bottom-nav.js`, `js/shared/page-shell.js`
-- All `screens/` except `home.js` (unless a step explicitly targets them)
-- All `data/` files (extend only, never restructure)
+- `screens/challenge-detail.js`, `screens/play.js`, `screens/result.js` (not yet targeted by a step)
+- `data/*.js` — extend carefully; world IDs were corrected in Step 3 as architecture fix
 
 ---
 
@@ -232,9 +232,9 @@ Data files export plain JS objects and query helpers. No fetch, no async, no ext
 | 2 | `play.js` session state not persisted | localStorage integration deferred | Add in a dedicated state/persistence step |
 | 3 | Member avatars are initials only | No images in static data | Add image URLs to data/members.js when available |
 | 4 | Header avatar navigates to `/crew` | No profile surface exists yet | Replace with `/profile` route when built |
-| 5 | Challenges data has only 3 items | Placeholder seed data | Expand data/challenges.js in a data step |
-| 6 | Fan questions are read-only | Submission requires backend | Deferred until backend/API step |
-| 7 | No search surface | Out of scope for Step 2 | Planned for a later step |
+| 5 | Each non-One Piece world has 1 challenge (2 questions) | Minimum coverage — Step 3.1 | Expand per world in a data step |
+| 6 | Fan questions are read-only, no submission | Submission requires backend | Deferred until backend/API step |
+| 7 | No search surface | Not yet targeted | Planned for a later step |
 | 8 | `play.js` inline re-render on question advance | Simple approach without extra abstraction | Refactor when play screen gets Step N attention |
 | 9 | Each non-One Piece world has exactly 1 challenge (2 questions) | Minimum coverage pass — Step 3.1 | Expand per world in a dedicated data step |
 | 10 | `worlds.js` has no poster images | Static build, no CDN/assets yet | Add `posterUrl` field when images are available |
@@ -305,3 +305,17 @@ All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `esti
   `.member-challenge-row` (compact challenge entry on member page).
 
 **Screens NOT changed:** Home, Worlds, World Detail, Fan Questions, Play, Result.
+
+## 16. Step 5 — Fan Questions Rebuild
+
+**What changed:**
+
+- `data/questions.js` — 5 → 10 questions. Fixed all `worldId` refs (old format IDs → valid anime IDs or null). Cleaned `askedBy` (removed mixed Korean characters). New questions cover Naruto, AoT, JJK, and general topics.
+
+- `screens/fan-questions.js` — full rebuild. Card anatomy: `.fq-world` tag (tappable → `/worlds/:id`) → `.fq-text` (question as primary focus, `text-base fw-semi`) → `.fq-footer` (`.fq-member` tappable → `/crew/:id` + `.fq-tag` outline badges). Added `mount()` with delegated click handler. Removed equal-weight card stack; null worldId/member degrade gracefully (element simply absent).
+
+- `css/components.css` — appended `.fq-card`, `.fq-world`, `.fq-text`, `.fq-footer`, `.fq-member`, `.fq-tag`.
+
+- `CLAUDE.md` — cleaned up: frozen-files list updated to reflect actual state; compromise row 5 corrected (was "3 challenges", now accurate); Step 5 section added.
+
+**Screens NOT changed:** Home, Worlds, World Detail, Crew, Member, Play, Result.

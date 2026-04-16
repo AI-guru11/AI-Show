@@ -766,3 +766,77 @@
 .member-challenge-row:active {
   border-color: var(--clr-border-hi);
 }
+
+/* ── Fan Question Card (.fq-*) ───────────────────────────── */
+/* Used exclusively in fan-questions.js.
+   Question text is the primary visual focus — world/member are supporting. */
+
+.fq-card {
+  padding: var(--sp-5);
+  background: var(--clr-bg-2);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--clr-border);
+}
+
+/* World tag button at top — tappable breadcrumb to /worlds/:id */
+.fq-world {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 3px var(--sp-2);
+  margin-block-end: var(--sp-3);
+  background: var(--clr-bg-3);
+  border-radius: var(--r-sm);
+  font-size: var(--text-xs);
+  color: var(--clr-text-2);
+  cursor: pointer;
+  border: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.fq-world:active {
+  color: var(--clr-text-0);
+}
+
+/* Question text — primary: largest, boldest element in card */
+.fq-text {
+  font-size: var(--text-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-0);
+  line-height: var(--lh-relaxed);
+  margin-block-end: var(--sp-3);
+}
+
+/* Footer row: member attribution + topic tags */
+.fq-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+/* Member attribution button — tappable, quiet */
+.fq-member {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: var(--clr-text-2);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.fq-member:active {
+  color: var(--clr-accent);
+}
+
+/* Topic tag — lighter than badge-default, no background fill */
+.fq-tag {
+  background: transparent;
+  color: var(--clr-text-2);
+  border: 1px solid var(--clr-border);
+  padding: 2px var(--sp-2);
+}
