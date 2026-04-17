@@ -367,3 +367,8 @@ All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `esti
 ## For schema planning and implementation boundaries, use:
 
 `docs/schema-draft-v1.md`
+
+
+## For backend setup sequencing and environment/bootstrap order, use:
+
+`docs/backend-bootstrap-plan-v1.md`
