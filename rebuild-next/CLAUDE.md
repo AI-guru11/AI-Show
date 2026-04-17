@@ -346,3 +346,13 @@ All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `esti
 - `screens/result.js` — answer review now uses the same Arabic letter circles as play; inline score styles replaced with CSS classes; secondary button label clarified to `تفاصيل التحدي`.
 
 **Screens intentionally not redesigned again:** Home, Worlds, Crew, Member, Play flow structure. Step 7 is polish/consistency only.
+
+
+
+## 19. Authoritative Production Reference
+
+For production architecture, system boundaries, and migration direction, use:
+
+`docs/production-decision-pack-v1.md`
+
+This document overrides informal planning notes and should be treated as the primary production decision source unless a newer version explicitly replaces it.
