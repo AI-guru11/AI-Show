@@ -356,3 +356,8 @@ For production architecture, system boundaries, and migration direction, use:
 `docs/production-decision-pack-v1.md`
 
 This document overrides informal planning notes and should be treated as the primary production decision source unless a newer version explicitly replaces it.
+
+
+For phased execution planning, use:
+
+`docs/roadmap-v1.md`
