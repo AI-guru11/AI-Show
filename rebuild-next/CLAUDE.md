@@ -372,3 +372,8 @@ All new challenges: `formatType: 'multiple-choice'`, `difficulty: 'easy'`, `esti
 ## For backend setup sequencing and environment/bootstrap order, use:
 
 `docs/backend-bootstrap-plan-v1.md`
+
+
+## For Supabase environment setup order and bootstrap checklist, use:
+
+`docs/supabase-setup-checklist-v1.md`
