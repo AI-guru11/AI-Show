@@ -31,6 +31,16 @@
   --clr-border:    #2e2e35;
   --clr-border-hi: #3e3e46;
 
+  /* ── Glass / Glow (Step 8) ─────────────────────────────── */
+  --glass-bg:          rgba(24, 24, 29, 0.64);
+  --glass-bg-soft:     rgba(24, 24, 29, 0.48);
+  --glass-border:      rgba(255, 255, 255, 0.08);
+  --glass-blur:        12px;
+  --shadow-diffuse:    0 16px 40px rgba(0, 0, 0, 0.32);
+  --shadow-hero-glow:  0 20px 60px rgba(212, 165, 50, 0.12);
+  --hero-ambient-1:    rgba(212, 165, 50, 0.14);
+  --hero-ambient-2:    rgba(255, 255, 255, 0.04);
+
   /* ── Typography ─────────────────────────────────────────── */
   --font-base: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue',
                'Cairo', 'Tajawal', Arial, sans-serif;

@@ -1,6 +1,6 @@
 /**
  * screens/home.js — الرئيسية
- * Step 2: decision screen with challenge-first hierarchy.
+ * Step 8.1: upgrade worlds strip from emoji pills to wide image mini-cards.
  *
  * Section order:
  *   1. Hero challenge      — dominant, primary CTA
@@ -50,44 +50,57 @@ const CHEVRON_LEFT = `
 function heroSection(c) {
   return `
     <section class="home-hero" data-nav="/challenges/${c.id}" role="region" aria-label="التحدي المميز">
-      <div class="home-hero-meta">
-        <span class="badge badge-accent">${c.formatTypeLabel}</span>
-        <span class="text-xs text-dim">${c.estimatedDuration} دقائق · ${c.difficultyLabel}</span>
+      <div class="home-hero-ambient" aria-hidden="true"></div>
+      <div class="home-hero-inner">
+        <div class="home-hero-meta">
+          <span class="badge badge-accent">${c.formatTypeLabel}</span>
+          <span class="home-hero-kicker">${c.estimatedDuration} دقائق · ${c.difficultyLabel}</span>
+        </div>
+        <h2 class="home-hero-title">${c.title}</h2>
+        <p class="home-hero-desc">${c.description}</p>
+        <button class="home-hero-cta" data-nav="/challenges/${c.id}">
+          ابدأ التحدي
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true" style="transform:scaleX(-1)">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
-      <h2 class="home-hero-title">${c.title}</h2>
-      <p class="home-hero-desc">${c.description}</p>
-      <button class="home-hero-cta" data-nav="/challenges/${c.id}">
-        ابدأ التحدي
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.5"
-             stroke-linecap="round" stroke-linejoin="round"
-             aria-hidden="true" style="transform:scaleX(-1)">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
     </section>`;
 }
 
+function worldCard(w) {
+  const media = w.imageThumb
+    ? `<img class="home-world-card-image" src="${w.imageThumb}" alt="" loading="lazy" decoding="async">`
+    : `<span class="home-world-card-fallback" aria-hidden="true">${w.emoji}</span>`;
+
+  return `
+    <button class="home-world-card" data-nav="/worlds/${w.id}" aria-label="${w.title}">
+      <span class="home-world-card-media">
+        ${media}
+      </span>
+      <span class="home-world-card-label">${w.title}</span>
+    </button>`;
+}
+
 function worldsSection() {
-  const pills = worlds.slice(0, 5).map(w => `
-    <button class="home-world-pill" data-nav="/worlds/${w.id}" aria-label="${w.title}">
-      <span class="home-world-pill-emoji" aria-hidden="true">${w.emoji}</span>
-      <span class="home-world-pill-label">${w.title}</span>
-    </button>`).join('');
+  const cards = worlds.slice(0, 5).map(worldCard).join('');
 
   return `
     <section class="page-section" role="region" aria-label="العوالم">
-      <div class="section-header">
+      <div class="section-header home-section-header">
         <h2 class="section-title">العوالم</h2>
         <button class="section-link" data-nav="/worlds">عرض الكل</button>
       </div>
-      <div class="h-scroll">${pills}</div>
+      <div class="h-scroll home-worlds-rail">${cards}</div>
     </section>`;
 }
 
 function featuredSection(c) {
   return `
-    <section class="page-section" role="region" aria-label="تحدي مميز">
+    <section class="page-section home-featured-section" role="region" aria-label="تحدي مميز">
       <button class="home-live-block" data-nav="/challenges/${c.id}">
         <div class="home-live-badge">
           <span class="badge badge-accent">مميز</span>
@@ -106,27 +119,25 @@ function featuredSection(c) {
 function questionsEntry(count) {
   return `
     <button class="home-questions-entry" data-nav="/questions" aria-label="أسئلة الجمهور">
-      <div style="text-align:right">
-        <p class="fw-semi text-sm">أسئلة الجمهور</p>
-        <p class="text-xs text-dim mt-1">${count} سؤال مفتوح ينتظر إجابة</p>
+      <div class="home-questions-copy">
+        <p class="home-questions-title">أسئلة الجمهور</p>
+        <p class="home-questions-meta">${count} سؤال مفتوح ينتظر إجابة</p>
       </div>
       ${CHEVRON_LEFT}
     </button>`;
 }
 
 function crewTeaser(crewMembers) {
-  const avatars = crewMembers.map((m, i) => `
-    <div class="member-avatar home-crew-avatar"
-         style="width:36px;height:36px;font-size:0.7rem${i > 0 ? ';margin-inline-start:-10px' : ''}"
-         aria-hidden="true">
+  const avatars = crewMembers.map(m => `
+    <div class="member-avatar home-crew-avatar" aria-hidden="true">
       ${m.initials}
     </div>`).join('');
 
   return `
-    <section class="page-section" role="region" aria-label="الطاقم">
+    <section class="page-section home-crew-section" role="region" aria-label="الطاقم">
       <button class="home-crew-strip" data-nav="/crew">
         <div class="home-crew-avatars">${avatars}</div>
-        <span class="text-sm fw-medium flex-1" style="text-align:right">تعرّف على الطاقم</span>
+        <span class="home-crew-label">تعرّف على الطاقم</span>
         ${CHEVRON_LEFT}
       </button>
     </section>`;
@@ -153,7 +164,6 @@ export function render() {
 // ── Event wiring ──────────────────────────────────────────────────────────────
 
 export function mount() {
-  // Single delegated handler — covers all [data-nav] on home
   document.getElementById('page-container')?.addEventListener('click', e => {
     const target = e.target.closest('[data-nav]');
     if (target) navigate(target.dataset.nav);
