@@ -1,0 +1,125 @@
+/* ============================================================
+   LAYOUT — shell structure, page container, grid helpers
+   ============================================================ */
+
+/* ── App Shell ───────────────────────────────────────────── */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: var(--max-content);
+  margin-inline: auto;
+  position: relative;
+  background-color: var(--clr-bg-1);
+}
+
+/* ── Header (fixed top) ──────────────────────────────────── */
+#shell-header {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  max-width: var(--max-content);
+  margin-inline: auto;
+  height: var(--header-h);
+  z-index: 100;
+  background-color: var(--clr-bg-0);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+/* ── Page Content ────────────────────────────────────────── */
+#page-container {
+  flex: 1;
+  margin-block-start: var(--header-h);
+  margin-block-end: var(--nav-h);
+  min-height: calc(100dvh - var(--header-h) - var(--nav-h));
+  overflow-y: auto;
+}
+
+/* ── Bottom Nav (fixed bottom) ───────────────────────────── */
+#shell-nav {
+  position: fixed;
+  bottom: 0;
+  inset-inline: 0;
+  max-width: var(--max-content);
+  margin-inline: auto;
+  height: var(--nav-h);
+  z-index: 100;
+  background-color: var(--clr-bg-0);
+  border-top: 1px solid var(--clr-border);
+}
+
+/* ── Page Section ────────────────────────────────────────── */
+.page {
+  padding: var(--sp-4) var(--page-px);
+  animation: page-in var(--dur-normal) var(--ease-out) both;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-section {
+  margin-block-end: var(--sp-8);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: var(--sp-4);
+}
+
+.section-title {
+  font-size: var(--text-md);
+  font-weight: var(--fw-semi);
+}
+
+.section-link {
+  font-size: var(--text-sm);
+  color: var(--clr-accent);
+  font-weight: var(--fw-medium);
+}
+
+/* ── Grid helpers ────────────────────────────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+/* ── Horizontal scroll strip ─────────────────────────────── */
+.h-scroll {
+  display: flex;
+  gap: var(--sp-3);
+  overflow-x: auto;
+  padding-block-end: var(--sp-2);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.h-scroll::-webkit-scrollbar { display: none; }
+
+.h-scroll > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
